@@ -1,0 +1,118 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/ActionBarTheme</item>
+        <item name="android:alertDialogTheme">@style/AlertDialogTheme</item>
+
+        <item name="android:background">@color/gray_light</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="FullScreenTheme" parent="android:Theme.Holo.NoActionBar.Fullscreen">
+        <item name="android:background">@color/gray_light</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="ActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/gray_light</item>
+        <item name="android:textSize">@dimen/text_big_size</item>
+        <item name="android:textColor">@color/main_gray_trans</item>
+        <item name="android:titleTextStyle">@style/TitleColor</item>
+    </style>
+
+    <style name="TitleColor" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/main_gray_trans</item>
+    </style>
+
+    <style name="BaseEditText" parent="@android:style/Widget.Holo.Light.EditText">
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@color/background_light_gray</item>
+        <item name="android:textColor">@color/main_gray_trans</item>
+        <item name="android:textSize">@dimen/text_medium_size</item>
+    </style>
+
+
+    <style name="EditTextMinderId" parent="BaseEditText">
+        <item name="android:maxLength">@integer/minder_id_length</item>
+        <item name="android:paddingTop">@dimen/minder_id_padding_top</item>
+        <item name="android:paddingBottom">@dimen/minder_id_padding_bottom</item>
+        <item name="android:layout_marginTop">@dimen/minder_id_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/minder_id_margin_bottom</item>
+    </style>
+
+    <style name="EditTextFirstName" parent="BaseEditText">
+        <item name="android:maxLength">@integer/first_name_length</item>
+        <item name="android:paddingTop">@dimen/create_account_padding_top</item>
+        <item name="android:paddingBottom">@dimen/create_account_padding_bottom</item>
+        <item name="android:layout_marginTop">@dimen/create_account_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/create_account_margin_bottom</item>
+    </style>
+
+    <style name="EditTextLastName" parent="BaseEditText">
+        <item name="android:maxLength">@integer/last_name_length</item>
+        <item name="android:paddingTop">@dimen/create_account_padding_top</item>
+        <item name="android:paddingBottom">@dimen/create_account_padding_bottom</item>
+        <item name="android:layout_marginTop">@dimen/create_account_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/create_account_margin_bottom</item>
+    </style>
+
+    <style name="EditTextEmail" parent="BaseEditText">
+        <item name="android:paddingTop">@dimen/create_account_padding_top</item>
+        <item name="android:paddingBottom">@dimen/create_account_padding_bottom</item>
+        <item name="android:layout_marginTop">@dimen/create_account_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/create_account_margin_bottom</item>
+    </style>
+
+    <style name="EditTextPassword" parent="BaseEditText">
+        <item name="android:maxLength">@integer/password_length_max</item>
+        <item name="android:paddingTop">@dimen/create_account_padding_top</item>
+        <item name="android:paddingBottom">@dimen/create_account_padding_bottom</item>
+        <item name="android:layout_marginTop">@dimen/create_account_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/create_account_margin_bottom</item>
+    </style>
+
+    <style name="EditTextConfirmPassword" parent="BaseEditText">
+        <item name="android:maxLength">@integer/password_length_max</item>
+        <item name="android:paddingTop">@dimen/create_account_padding_top</item>
+        <item name="android:paddingBottom">@dimen/create_account_padding_bottom</item>
+        <item name="android:layout_marginTop">@dimen/create_account_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/create_account_margin_bottom</item>
+    </style>
+
+    <style name="TextExtraBig">
+        <item name="android:textSize">@dimen/extra_big_text_size</item>
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+
+    <style name="TextBig">
+        <item name="android:textSize">@dimen/text_big_size</item>
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+
+    <style name="TextMedium">
+        <item name="android:textSize">@dimen/text_medium_size</item>
+        <item name="android:textColor">@color/text_black</item>
+    </style>
+    
+    <style name="ButtonStyle">
+        <item name="android:background">@drawable/button_blue</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:layout_marginTop">@dimen/login_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/login_margin_bottom</item>
+    </style>
+
+    <style name="CongratulationTitle" parent="TextExtraBig">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">@dimen/congr_title_margin_bottom</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="android:Theme.Holo.Dialog">
+        
+        <item name="android:windowBackground">@color/orange</item>
+
+    </style>
+
+
+
+</resources>

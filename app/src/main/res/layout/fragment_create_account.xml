@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="25dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/first_name_title_FCA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/first_name"
+            style="@style/TextBig"/>
+        <EditText
+            android:id="@+id/first_name_FCA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EditTextFirstName"/>
+
+        <TextView
+            android:id="@+id/last_name_title_FCA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_name"
+            style="@style/TextBig"/>
+        <EditText
+            android:id="@+id/last_name_FCA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EditTextLastName"/>
+
+        <TextView
+            android:id="@+id/email_title_FCA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            style="@style/TextBig"/>
+        <EditText
+            android:id="@+id/email_FCA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EditTextEmail"/>
+
+        <TextView
+            android:id="@+id/password_title_FCA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/password"
+            style="@style/TextBig"/>
+        <EditText
+            android:id="@+id/password_FCA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EditTextPassword"/>
+
+        <TextView
+            android:id="@+id/confirm_password_title_FCA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_password"
+            style="@style/TextBig"/>
+        <EditText
+            android:id="@+id/confirm_password_FCA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EditTextConfirmPassword"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/accept_terms_condition"
+                android:textColor="@color/text_white"
+                android:id="@+id/checkBox"
+                android:checked="true" />
+
+            <Button
+                android:id="@+id/button_signup_FCA"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Sing_up"
+                android:layout_marginTop="@dimen/button_margin_top"
+                style="@style/ButtonStyle"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,35 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="text_small_size">14sp</dimen>
+    <dimen name="text_medium_size">16sp</dimen>
+    <dimen name="text_big_size">18sp</dimen>
+    <dimen name="extra_big_text_size">33sp</dimen>
+
+    <dimen name="minder_id_padding_top">10sp</dimen>
+    <dimen name="minder_id_padding_bottom">10sp</dimen>
+    <dimen name="minder_id_margin_top">6sp</dimen>
+    <dimen name="minder_id_margin_bottom">25sp</dimen>
+
+    <dimen name="create_account_padding_top">10sp</dimen>
+    <dimen name="create_account_padding_bottom">10sp</dimen>
+    <dimen name="create_account_margin_top">6sp</dimen>
+    <dimen name="create_account_margin_bottom">6sp</dimen>
+
+    <dimen name="congr_title_margin_bottom">20sp</dimen>
+
+
+    <dimen name="login_margin_top">10sp</dimen>
+    <dimen name="login_margin_bottom">10sp</dimen>
+
+    <dimen name="button_margin_top">80sp</dimen>
+    <integer name="minder_id_length">8</integer>
+    <integer name="first_name_length">35</integer>
+    <integer name="last_name_length">35</integer>
+    <integer name="password_length_min">6</integer>
+    <integer name="password_length_max">35</integer>
+
+
+</resources>
