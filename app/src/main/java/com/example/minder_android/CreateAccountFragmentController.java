@@ -14,16 +14,16 @@ public final class CreateAccountFragmentController {
     }
 
     public final String checkInput(final String _firstName, final String _lastName, final String _email, final String _password, final String _confirmPassword, final boolean _checkTerms) {
-        if (_firstName.isEmpty()) return Const.FIRSTNAME_ERROR;
-        if (_lastName.isEmpty()) return Const.LASTNAME_ERROR;
-        if (!validEmail(_email)) return Const.EMAIL_ERROR;
-        if (_password.isEmpty()) return Const.PASSWORD_EMPTY_ERROR;
-        if (_password.length() < Const.MIN_PASSWORD_LENGTH) return Const.PASSWORD_LENGTH_ERROR;
-        if (!_password.equals(_confirmPassword)) return Const.CONFIRM_ERROR;
-        if (!_checkTerms) return Const.ACCEPT_TERMS_ERROR;
+        if (_firstName.isEmpty()) return mFragment.getString(R.string.firstname_error);
+        if (_lastName.isEmpty()) return mFragment.getString(R.string.lastname_error);
+        if (!validEmail(_email)) return mFragment.getString(R.string.email_error);
+        if (_password.isEmpty()) return mFragment.getString(R.string.password_error);
+        if (_password.length() < Const.MIN_PASSWORD_LENGTH) return mFragment.getString(R.string.password_length_error) + " " + Const.MIN_PASSWORD_LENGTH;
+        if (!_password.equals(_confirmPassword)) return mFragment.getString(R.string.confirm_error);
+        if (!_checkTerms) return mFragment.getString(R.string.accept_terms_error);
         EmulateServerConnect.postMinderId();
 
-        return Const.SUCESSFUL;
+        return mFragment.getString(R.string.successful);
     }
 
 

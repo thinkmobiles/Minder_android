@@ -6,27 +6,17 @@ import java.util.regex.Pattern;
 /**
  * Created by Юзер on 06.05.2015.
  */
-public class EmailValidator{
-
-    private Pattern pattern;
-    private Matcher matcher;
-
-    private static final String EMAIL_PATTERN =
-            "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+public final class EmailValidator{
+    private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private Pattern mPattern;
+    private Matcher mMatcher;
 
     public EmailValidator(){
-        pattern = Pattern.compile(EMAIL_PATTERN);
+        mPattern = Pattern.compile(EMAIL_PATTERN);
     }
 
-    /**
-     * Validate hex with regular expression
-     * @param hex hex for validation
-     * @return true valid hex, false invalid hex
-     */
-    public boolean validate(final String hex){
-
-        matcher = pattern.matcher(hex);
-        return matcher.matches();
-
+    public final boolean validate(final String _hex){
+        mMatcher = mPattern.matcher(_hex);
+        return mMatcher.matches();
     }
 }

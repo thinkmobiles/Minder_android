@@ -2,27 +2,31 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light">
-        <item name="android:actionBarStyle">@style/ActionBarTheme</item>
+        <item name="android:actionBarStyle">@style/ActionBarStyle</item>
         <item name="android:background">@color/gray_light</item>
         <!-- Customize your theme here. -->
     </style>
 
+    <!-- Splash screen style-->
     <style name="FullScreenTheme" parent="android:Theme.Holo.NoActionBar.Fullscreen">
         <item name="android:background">@color/gray_light</item>
-        <!-- Customize your theme here. -->
     </style>
 
-    <style name="ActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+    <!-- ActionBar Style -->
+    <style name="ActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
         <item name="android:background">@color/gray_light</item>
         <item name="android:textSize">@dimen/text_big_size</item>
-        <item name="android:textColor">@color/main_gray_trans</item>
+        <item name="android:textColor">@color/blue</item>
         <item name="android:titleTextStyle">@style/TitleColor</item>
     </style>
 
+    <!-- Text style for ActionBar -->
     <style name="TitleColor" parent="android:TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/main_gray_trans</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textSize">@dimen/extra_big_text_size</item>
     </style>
 
+    <!-- widgets components styles -->
     <style name="BaseEditText" parent="@android:style/Widget.Holo.Light.EditText">
         <item name="android:singleLine">true</item>
         <item name="android:background">@color/background_light_gray</item>
@@ -106,9 +110,7 @@
     </style>
 
     <style name="AlertDialogTheme" parent="android:Theme.Holo.Dialog">
-        
         <item name="android:background">@color/background_light_gray</item>
-
     </style>
 
 

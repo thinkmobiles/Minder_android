@@ -12,22 +12,22 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * Created by Þçåð on 05.05.2015.
+ * Created by ï¿½ï¿½ï¿½ï¿½ on 05.05.2015.
  */
-public class CongratulationFragment extends BaseFragment {
-    @InjectView(R.id.ok_button_FC)      Button mOk_Btn;
+public final class CongratulationFragment extends BaseFragment {
+    @InjectView(R.id.ok_button_FC)      Button btn_Ok;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_congratulation, container,false);
+    public final View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
+        View view = _inflater.inflate(R.layout.fragment_congratulation, _container,false);
         ButterKnife.inject(this, view);
         getBaseActivity().setActionBar(false);
         return view;
     }
 
     @Override
-    protected void setAbTitle() {
+    protected final void setAbTitle() {
 
     }
 

@@ -15,15 +15,10 @@ import butterknife.InjectView;
 /**
  * Created by Юзер on 07.05.2015.
  */
-public class CustomDialog extends DialogFragment implements View.OnClickListener {
-    @InjectView(R.id.message_FD)
-    TextView tvMessage;
-
-    @InjectView(R.id.positive_btn_FD)
-    Button btnPositive;
-
-    @InjectView(R.id.negative_btn_FD)
-    Button btnNegative;
+public final class CustomDialog extends DialogFragment implements View.OnClickListener {
+    @InjectView(R.id.message_FD)        TextView tvMessage;
+    @InjectView(R.id.positive_btn_FD)   Button btnPositive;
+    @InjectView(R.id.negative_btn_FD)   Button btnNegative;
 
     private View view;
     private OnCustomClickListener mListener = null;
@@ -35,20 +30,20 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
 
     @Nullable
     @Override
-    public View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
+    public final View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
         view = _inflater.inflate(R.layout.fragment_dialog, _container, false);
         ButterKnife.inject(this, view);
         getDialog().setTitle(mTitle);
 
         tvMessage.setText(mMessage);
 
-        if ( !(mPositiveTitle.isEmpty() || mPositiveTitle == null))  {
+        if (!(mPositiveTitle.isEmpty() || mPositiveTitle == null)) {
             btnPositive.setVisibility(View.VISIBLE);
             btnPositive.setText(mPositiveTitle);
             btnPositive.setOnClickListener(this);
         }
 
-        if ( !(mNegativeTitle.isEmpty() || mNegativeTitle == null)) {
+        if (!(mNegativeTitle.isEmpty() || mNegativeTitle == null)) {
             btnNegative.setVisibility(View.VISIBLE);
             btnNegative.setText(mNegativeTitle);
             btnNegative.setOnClickListener(this);
@@ -79,8 +74,8 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
 
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    public final void onClick(final View _v) {
+        switch (_v.getId()) {
             case R.id.positive_btn_FD:
                 if (mListener != null) mListener.onPositive();
                 dismiss();

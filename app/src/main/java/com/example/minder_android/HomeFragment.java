@@ -1,8 +1,5 @@
 package com.example.minder_android;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -17,38 +14,34 @@ import butterknife.OnClick;
 /**
  * Created by ���� on 06.05.2015.
  */
-public class HomeFragment extends BaseFragment implements OnCustomClickListener{
-    @InjectView(R.id.disconnect_btn_FH)         Button disconnect_btn;
+public final class HomeFragment extends BaseFragment implements OnCustomClickListener{
+    @InjectView(R.id.disconnect_btn_FH)         Button btnDisconnect;
 
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+    public final View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
+        View view = _inflater.inflate(R.layout.fragment_home, _container, false);
         getBaseActivity().setActionBar(true);
         ButterKnife.inject(this, view);
         return view;
     }
 
     @Override
-    protected void setAbTitle() {
-        mActionBar.setTitle(getResources().getString(R.string.home));
+    protected final void setAbTitle() {
+        mActionBar.setTitle(getString(R.string.home));
     }
 
     @OnClick (R.id.disconnect_btn_FH)
     final void onDisconnectClicked() {
-
         getBaseActivity().showDialog("Exit", "Are you sure?", this, "Yes", "No");
-
     }
 
     @Override
-    public void onPositive() {
+    public final void onPositive() {
         getBaseActivity().switchContent(new SignInFragment(), false);
     }
 
     @Override
-    public void onNegative() {
-
-    }
+    public final void onNegative() {}
 }

@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="25dp"
-    >
+    android:padding="@dimen/main_padding">
 
     <TextView
         android:id="@+id/congratulations_title_FC"

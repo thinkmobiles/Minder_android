@@ -2,12 +2,9 @@ package com.example.minder_android;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.content.DialogInterface;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -17,31 +14,31 @@ import android.view.inputmethod.InputMethodManager;
  */
 public abstract class BaseActivity extends Activity {
 
-    public void switchContent(Fragment _fragment) {
+    public final void switchContent(final Fragment _fragment) {
         switchContent(_fragment, true);
     }
 
-    public void switchContent(Fragment _fragment, boolean addToBackStack) {
+    public final void switchContent(final Fragment _fragment, boolean addToBackStack) {
         hideSoftKeyBoard();
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        final FragmentTransaction transaction = getFragmentManager().beginTransaction();
         if (addToBackStack) {
             transaction.addToBackStack(_fragment.getTag());
         }
         transaction.replace(R.id.fl_content, _fragment, _fragment.getTag()).commit();
     }
 
-    public void hideSoftKeyBoard() {
-        View focusedView = getCurrentFocus();
+    public final void hideSoftKeyBoard() {
+        final View focusedView = getCurrentFocus();
         if (focusedView!= null) {
             InputMethodManager inputMethodManager = (InputMethodManager)  getSystemService(Activity.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(focusedView.getWindowToken(), 0);
         }
     }
 
-    public void setActionBar(boolean visible) {
-        ActionBar actionBar = getActionBar();
+    public final void setActionBar(boolean _visible) {
+        final ActionBar actionBar = getActionBar();
         if (actionBar != null) {
-            if (visible) actionBar.show();
+            if (_visible) actionBar.show();
             else actionBar.hide();
         }
     }
@@ -57,7 +54,6 @@ public abstract class BaseActivity extends Activity {
         if (_negativeTitle != null) dialog.setNegativeButton(_negativeTitle);
 
         dialog.show(getFragmentManager(), "");
-
     }
 
 }

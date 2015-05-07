@@ -3,25 +3,23 @@ package com.example.minder_android;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.widget.TextView;
 
 /**
- * Created by Þçåð on 05.05.2015.
+ * Created by ï¿½ï¿½ï¿½ï¿½ on 05.05.2015.
  */
 public abstract class BaseFragment extends Fragment {
     private BaseActivity mActivity;
     protected ActionBar mActionBar;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
         mActivity   = (BaseActivity) getActivity();
         mActionBar  = mActivity.getActionBar();
-
     }
 
     @Override
-    public void onResume() {
+    public final void onResume() {
         super.onResume();
         if (mActionBar != null) {
             setAbTitle();
@@ -29,7 +27,6 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected abstract void setAbTitle();
-
 
     public final BaseActivity getBaseActivity() {
         return mActivity;

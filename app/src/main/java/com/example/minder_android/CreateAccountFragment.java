@@ -15,43 +15,43 @@ import butterknife.OnClick;
 /**
  * Created by ���� on 05.05.2015.
  */
-public class CreateAccountFragment extends BaseFragment {
-    @InjectView(R.id.first_name_FCA)        EditText mFirstNameET;
-    @InjectView(R.id.last_name_FCA)         EditText mLastNameET;
-    @InjectView(R.id.email_FCA)             EditText mEmailET;
-    @InjectView(R.id.password_FCA)          EditText mPasswordET;
-    @InjectView(R.id.confirm_password_FCA)  EditText mConfirmPasswordET;
-    @InjectView(R.id.button_signup_FCA)     Button mSignUpBtn;
-    @InjectView(R.id.accept_CB_FCA)         CheckBox mAcceptCB;
+public final class CreateAccountFragment extends BaseFragment {
+    @InjectView(R.id.first_name_FCA)        EditText etFisrtName;
+    @InjectView(R.id.last_name_FCA)         EditText etLastName;
+    @InjectView(R.id.email_FCA)             EditText etEmail;
+    @InjectView(R.id.password_FCA)          EditText etPassword;
+    @InjectView(R.id.confirm_password_FCA)  EditText etConfirmPassword;
+    @InjectView(R.id.button_signup_FCA)     Button btnSignUp;
+    @InjectView(R.id.accept_CB_FCA)         CheckBox cbAccept;
 
     private CreateAccountFragmentController mController;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public final void onCreate(Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
         mController = new CreateAccountFragmentController(this);
     }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_create_account, container, false);
+    public final View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
+        View view = _inflater.inflate(R.layout.fragment_create_account, _container, false);
         ButterKnife.inject(this, view);
         return view;
     }
 
     @Override
-    protected void setAbTitle() {
+    protected final void setAbTitle() {
         mActionBar.setTitle(getResources().getString(R.string.Sing_up));
     }
 
 
     @OnClick (R.id.button_signup_FCA)
     final void onSignUpClicked() {
-        String check = mController.checkInput(mFirstNameET.getText().toString(), mLastNameET.getText().toString(),
-                                        mEmailET.getText().toString(), mPasswordET.getText().toString(),
-                                        mConfirmPasswordET.getText().toString(), mAcceptCB.isChecked() );
-        if (check.equals(Const.SUCESSFUL)) {
+        final String check = mController.checkInput(etFisrtName.getText().toString(), etLastName.getText().toString(),
+                etEmail.getText().toString(), etPassword.getText().toString(),
+                etConfirmPassword.getText().toString(), cbAccept.isChecked());
+        if (check.equals(getString(R.string.successful))) {
             getBaseActivity().getFragmentManager().popBackStack();
             getBaseActivity().switchContent(new CongratulationFragment());
         } else {

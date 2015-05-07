@@ -7,21 +7,22 @@ import android.view.View;
  */
 public final class SignInFragmentController {
     private BaseFragment mFragment;
-    private EmulateServerConnect connect;
+    private EmulateServerConnect mConnect;
 
-    public SignInFragmentController(BaseFragment _fragment) {
+    public SignInFragmentController(final BaseFragment _fragment) {
         mFragment = _fragment;
-        connect = new EmulateServerConnect(mFragment.getBaseActivity());
+        mConnect = new EmulateServerConnect(mFragment.getBaseActivity());
     }
 
 
-    public final boolean validID(String _id) {
+    public final boolean validID(final String _id) {
+        if (_id.isEmpty() || _id == null) return false;
         if (EmulateServerConnect.getMinderId().equals(_id)) return true;
         return false;
     }
 
     public final String getMinderId() {
-        return connect.getMinderId();
+        return mConnect.getMinderId();
     }
 
 

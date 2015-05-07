@@ -1,29 +1,42 @@
 <resources>
     <string name="app_name">Minder</string>
 
-
-    <string name="action_settings">Settings</string>
-
+    <!-- main message on splash screen -->
     <string name="title_splash_activity">Splash Screen</string>
 
-    <string name="minder_id">Minder ID</string>
 
+    <string name="minder_id">Minder ID</string>
     <string name="log_in">Log in</string>
     <string name="create_account">Create account</string>
 
+    <!-- Sign up screen -->
     <string name="Sign_in">Sign in</string>
     <string name="Sing_up">Sign up</string>
-    
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm password</string>
     <string name="accept_terms_condition">I accept terms and conditions</string>
+
+    <!-- Congratulation screen -->
     <string name="congratulations">Congratulations</string>
     <string name="congr_text">You have been successfully registered and logged in the Minder Application. Please confirm your email by tapping the OK button</string>
     <string name="ok">OK</string>
+
+    <!-- Homd screen -->
     <string name="home">Home</string>
     <string name="home_text">You are now connected to the service</string>
     <string name="disconnect">Disconnect</string>
+
+    <!-- Error message-->
+    <string name="firstname_error">First name is empty</string>
+    <string name="lastname_error">Last name is empty</string>
+    <string name="email_error">Email adress is incorrect</string>
+    <string name="password_error">Password is empty</string>
+    <string name="password_length_error">Password length is less then </string>
+    <string name="confirm_error">Confirmed password doesn`t match to password</string>
+    <string name="accept_terms_error">Terms and conditions do not confirm</string>
+    <string name="successful">Successfull</string>
+
 </resources>

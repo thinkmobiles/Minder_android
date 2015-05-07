@@ -3,8 +3,8 @@
     <color name="text_black">#363636</color>
     <color name="text_white">#E9E9E9</color>
     <color name="gray_light">#ff788896</color>
-    <color name="main_gray_trans">#7e495a6a</color>
+    <color name="main_gray_trans">#fe495a6a</color>
     <color name="background_light_gray">#FFC9C9C9</color>
     <color name="blue">#FF1D7688</color>
-    <color name="orange">#FFEFC501</color>
+
 </resources>

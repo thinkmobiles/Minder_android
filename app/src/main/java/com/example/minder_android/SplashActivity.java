@@ -5,24 +5,22 @@ import android.content.Intent;
 import android.os.Bundle;
 
 /**
- * Created by Þçåð on 05.05.2015.
+ * Created by ï¿½ï¿½ï¿½ï¿½ on 05.05.2015.
  */
 public final class SplashActivity extends Activity {
-    private final int SLEEP_TIME = 3000;
+
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash_activity);
-
-
+    public final void onCreate(final Bundle _savedInstanceState) {
+        super.onCreate(_savedInstanceState);
+        setContentView(R.layout.activity_splash);
 
         Thread splashTread = new Thread() {
             @Override
             public void run() {
 
                 try {
-                    sleep(SLEEP_TIME);
+                    sleep(Const.SLEEP_TIME);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
@@ -36,8 +34,6 @@ public final class SplashActivity extends Activity {
             ;
         };
         splashTread.start();
-
-
     }
 
 }
