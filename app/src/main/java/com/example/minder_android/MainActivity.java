@@ -47,5 +47,6 @@ public class MainActivity extends BaseActivity {
         if(!(currentFragment instanceof CongratulationFragment)) {
             super.onBackPressed();
         }
+
     }
 }

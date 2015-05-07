@@ -3,18 +3,25 @@ package com.example.minder_android;
 import android.view.View;
 
 /**
- * Created by Þçåð on 06.05.2015.
+ * Created by ï¿½ï¿½ï¿½ï¿½ on 06.05.2015.
  */
 public final class SignInFragmentController {
     private BaseFragment mFragment;
+    private EmulateServerConnect connect;
 
     public SignInFragmentController(BaseFragment _fragment) {
         mFragment = _fragment;
+        connect = new EmulateServerConnect(mFragment.getBaseActivity());
     }
 
 
-    public final boolean validID() {
-        return true;
+    public final boolean validID(String _id) {
+        if (EmulateServerConnect.getMinderId().equals(_id)) return true;
+        return false;
+    }
+
+    public final String getMinderId() {
+        return connect.getMinderId();
     }
 
 

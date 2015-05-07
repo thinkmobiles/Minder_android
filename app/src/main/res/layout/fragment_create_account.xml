@@ -75,8 +75,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/accept_terms_condition"
                 android:textColor="@color/text_white"
-                android:id="@+id/checkBox"
-                android:checked="true" />
+                android:id="@+id/accept_CB_FCA"
+                />
 
             <Button
                 android:id="@+id/button_signup_FCA"

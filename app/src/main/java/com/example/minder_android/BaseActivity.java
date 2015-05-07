@@ -46,22 +46,23 @@ public abstract class BaseActivity extends Activity {
     }
 
     public final void showAlertDialog(final String _title, final String _text, final OnAlertDialogListener _listener, final String _positiveTitle, final String _negativeTitle) {
-        AlertDialog.Builder ab = new AlertDialog.Builder(this, R.style.AlertDialogTheme);
+        AlertDialog.Builder ab = new AlertDialog.Builder(this);
         ab.setTitle(_title);
         ab.setMessage(_text);
         ab.setCancelable(false);
+
         if (_positiveTitle != null)
-        ab.setPositiveButton(_positiveTitle, new DialogInterface.OnClickListener() {
+            ab.setPositiveButton(_positiveTitle, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                _listener.onPositive();
+                if (_listener != null) _listener.onPositive();
             }
         });
         if (_negativeTitle != null)
             ab.setNegativeButton(_negativeTitle, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    _listener.onNegative();
+                    if (_listener != null) _listener.onNegative();
                 }
             });
         Dialog dialog = ab.create();

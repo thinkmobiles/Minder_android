@@ -13,7 +13,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * Created by Þçåð on 05.05.2015.
+ * Created by ï¿½ï¿½ï¿½ï¿½ on 05.05.2015.
  */
 public final class SignInFragment extends BaseFragment {
     @InjectView(R.id.button_create_account_FL)      Button mButtonCreateAccout;
@@ -37,7 +37,7 @@ public final class SignInFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         ButterKnife.inject(this, view);
-
+        mMinderIdText.setText(mController.getMinderId());
         return view;
     }
 
@@ -48,8 +48,10 @@ public final class SignInFragment extends BaseFragment {
 
     @OnClick (R.id.button_login_FL)
     final void onLoginClicked(){
-        if (mController.validID()) {
+        if (mController.validID(mMinderIdText.getText().toString())) {
             getBaseActivity().switchContent(new HomeFragment(), false);
+        } else {
+            getBaseActivity().showAlertDialog("Error", "Id is incorrect", null, "OK", "");
         }
     }
 
