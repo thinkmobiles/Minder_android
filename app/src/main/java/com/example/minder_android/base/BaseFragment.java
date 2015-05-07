@@ -1,4 +1,4 @@
-package com.example.minder_android;
+package com.example.minder_android.base;
 
 import android.app.ActionBar;
 import android.app.Fragment;

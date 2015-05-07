@@ -1,4 +1,4 @@
-package com.example.minder_android;
+package com.example.minder_android.core.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

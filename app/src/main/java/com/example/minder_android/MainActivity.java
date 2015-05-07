@@ -3,6 +3,10 @@ package com.example.minder_android;
 import android.app.Fragment;
 import android.os.Bundle;
 
+import com.example.minder_android.base.BaseActivity;
+import com.example.minder_android.main.CongratulationFragment;
+import com.example.minder_android.main.SignInFragment;
+
 public final class MainActivity extends BaseActivity {
 
     @Override

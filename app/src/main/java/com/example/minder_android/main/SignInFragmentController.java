@@ -1,6 +1,7 @@
-package com.example.minder_android;
+package com.example.minder_android.main;
 
-import android.view.View;
+import com.example.minder_android.base.BaseFragment;
+import com.example.minder_android.core.EmulateServerConnect;
 
 /**
  * Created by ���� on 06.05.2015.

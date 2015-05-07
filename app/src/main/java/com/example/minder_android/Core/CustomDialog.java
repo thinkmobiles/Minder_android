@@ -1,4 +1,4 @@
-package com.example.minder_android;
+package com.example.minder_android.core;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.minder_android.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

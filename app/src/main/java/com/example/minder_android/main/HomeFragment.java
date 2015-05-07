@@ -1,4 +1,4 @@
-package com.example.minder_android;
+package com.example.minder_android.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.minder_android.base.BaseFragment;
+import com.example.minder_android.R;
+import com.example.minder_android.core.OnCustomClickListener;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -14,7 +18,7 @@ import butterknife.OnClick;
 /**
  * Created by ���� on 06.05.2015.
  */
-public final class HomeFragment extends BaseFragment implements OnCustomClickListener{
+public final class HomeFragment extends BaseFragment implements OnCustomClickListener {
     @InjectView(R.id.disconnect_btn_FH)         Button btnDisconnect;
 
 

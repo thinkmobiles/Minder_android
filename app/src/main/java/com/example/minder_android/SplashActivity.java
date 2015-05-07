@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.minder_android.core.Const;
+
 /**
  * Created by ���� on 05.05.2015.
  */

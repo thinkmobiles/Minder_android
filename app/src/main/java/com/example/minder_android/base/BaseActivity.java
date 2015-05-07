@@ -1,4 +1,4 @@
-package com.example.minder_android;
+package com.example.minder_android.base;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -7,6 +7,10 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+
+import com.example.minder_android.R;
+import com.example.minder_android.core.CustomDialog;
+import com.example.minder_android.core.OnCustomClickListener;
 
 
 /**

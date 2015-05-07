@@ -1,4 +1,4 @@
-package com.example.minder_android;
+package com.example.minder_android.core;
 
 /**
  * Created by ���� on 06.05.2015.

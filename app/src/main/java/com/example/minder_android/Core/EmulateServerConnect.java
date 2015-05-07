@@ -1,4 +1,4 @@
-package com.example.minder_android;
+package com.example.minder_android.core;
 
 import android.content.Context;
 import android.content.SharedPreferences;
