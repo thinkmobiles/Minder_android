@@ -19,15 +19,12 @@ public final class MainActivity extends BaseActivity {
         else {
             switchContent(getFragmentManager().findFragmentByTag(_savedInstanceState.getString("tag")),false);
         }
-
     }
 
-
-
     @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        outState.putString("tag", getCurrentFragment().getTag().toString());
-        super.onSaveInstanceState(outState);
+    protected void onSaveInstanceState(Bundle _outState) {
+        _outState.putString("tag", getCurrentFragment().getTag().toString());
+        super.onSaveInstanceState(_outState);
     }
 
     @Override
