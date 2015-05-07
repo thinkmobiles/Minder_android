@@ -14,15 +14,32 @@ public final class MainActivity extends BaseActivity {
         super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_main);
         getActionBar().setDisplayShowHomeEnabled(false);
-        switchContent(new SignInFragment(), false);
+        if (_savedInstanceState == null)
+            switchContent(new SignInFragment(), false);
+        else {
+            switchContent(getFragmentManager().findFragmentByTag(_savedInstanceState.getString("tag")),false);
+        }
 
+    }
+
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("tag", getCurrentFragment().getTag().toString());
+        super.onSaveInstanceState(outState);
     }
 
     @Override
     public final void onBackPressed() {
-        final Fragment currentFragment = getFragmentManager().findFragmentById(R.id.fl_content);
-        if(!(currentFragment instanceof CongratulationFragment)) {
+
+        if(!(getCurrentFragment() instanceof CongratulationFragment)) {
             super.onBackPressed();
         }
+    }
+
+
+    private final Fragment getCurrentFragment() {
+        return  getFragmentManager().findFragmentById(R.id.fl_content);
     }
 }

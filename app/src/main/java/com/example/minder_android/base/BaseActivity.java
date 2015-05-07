@@ -25,10 +25,12 @@ public abstract class BaseActivity extends Activity {
     public final void switchContent(final Fragment _fragment, boolean addToBackStack) {
         hideSoftKeyBoard();
         final FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.fl_content, _fragment, _fragment.getClass().getName().toString());
         if (addToBackStack) {
             transaction.addToBackStack(_fragment.getTag());
         }
-        transaction.replace(R.id.fl_content, _fragment, _fragment.getTag()).commit();
+        transaction.commit();
     }
 
     public final void hideSoftKeyBoard() {
@@ -59,5 +61,6 @@ public abstract class BaseActivity extends Activity {
 
         dialog.show(getFragmentManager(), "");
     }
+
 
 }

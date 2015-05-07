@@ -16,6 +16,7 @@ public abstract class BaseFragment extends Fragment {
         super.onCreate(_savedInstanceState);
         mActivity   = (BaseActivity) getActivity();
         mActionBar  = mActivity.getActionBar();
+
     }
 
     @Override
