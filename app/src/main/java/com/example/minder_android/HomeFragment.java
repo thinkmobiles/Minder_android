@@ -15,9 +15,9 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * Created by Þçåð on 06.05.2015.
+ * Created by ï¿½ï¿½ï¿½ï¿½ on 06.05.2015.
  */
-public class HomeFragment extends BaseFragment implements OnAlertDialogListener{
+public class HomeFragment extends BaseFragment implements OnCustomClickListener{
     @InjectView(R.id.disconnect_btn_FH)         Button disconnect_btn;
 
 
@@ -37,27 +37,8 @@ public class HomeFragment extends BaseFragment implements OnAlertDialogListener{
 
     @OnClick (R.id.disconnect_btn_FH)
     final void onDisconnectClicked() {
-/*
-        AlertDialog.Builder ab = new AlertDialog.Builder(getBaseActivity());
-        ab.setTitle("title");
-        ab.setMessage("text");
-        ab.setCancelable(false);
-        ab.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
 
-            }
-        });
-        ab.setNegativeButton("no", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        Dialog dialog = ab.create();
-        dialog.show();
-*/
-        getBaseActivity().showAlertDialog("Exit", "Are you sure?", this, "Yes", "No");
+        getBaseActivity().showDialog("Exit", "Are you sure?", this, "Yes", "No");
 
     }
 

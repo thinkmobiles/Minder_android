@@ -51,7 +51,7 @@ public final class SignInFragment extends BaseFragment {
         if (mController.validID(mMinderIdText.getText().toString())) {
             getBaseActivity().switchContent(new HomeFragment(), false);
         } else {
-            getBaseActivity().showAlertDialog("Error", "Id is incorrect", null, "OK", "");
+            getBaseActivity().showDialog("Error", "Id is incorrect", null, "OK", "");
         }
     }
 

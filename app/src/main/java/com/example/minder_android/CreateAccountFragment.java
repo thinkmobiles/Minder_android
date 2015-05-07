@@ -55,7 +55,7 @@ public class CreateAccountFragment extends BaseFragment {
             getBaseActivity().getFragmentManager().popBackStack();
             getBaseActivity().switchContent(new CongratulationFragment());
         } else {
-            getBaseActivity().showAlertDialog("Input error", check, null, "", "OK");
+            getBaseActivity().showDialog("Input error", check, null, "", "OK");
         }
 
     }

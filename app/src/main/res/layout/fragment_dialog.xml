@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:showDividers="beginning">
+
+    <TextView
+        android:id="@+id/message_FD"
+        android:text="Message"
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:background="@color/background_light_gray"
+        style="@style/TextBig"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:id="@+id/positive_btn_FD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ok"
+            android:layout_weight="50"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/negative_btn_FD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:layout_weight="50"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

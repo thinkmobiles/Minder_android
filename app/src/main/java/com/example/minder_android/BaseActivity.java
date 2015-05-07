@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
@@ -12,7 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 
 
 /**
- * Created by Þçåð on 05.05.2015.
+ * Created by ï¿½ï¿½ï¿½ï¿½ on 05.05.2015.
  */
 public abstract class BaseActivity extends Activity {
 
@@ -45,29 +46,18 @@ public abstract class BaseActivity extends Activity {
         }
     }
 
-    public final void showAlertDialog(final String _title, final String _text, final OnAlertDialogListener _listener, final String _positiveTitle, final String _negativeTitle) {
-        AlertDialog.Builder ab = new AlertDialog.Builder(this);
-        ab.setTitle(_title);
-        ab.setMessage(_text);
-        ab.setCancelable(false);
+    public final void showDialog(final String _title, final String _message, final OnCustomClickListener _listener, final String _positiveTitle, final String _negativeTitle) {
+        CustomDialog dialog = new CustomDialog();
+        dialog.setTitle(_title);
+        dialog.setMessage(_message);
+        dialog.setOnCustomClickListener(_listener);
+        dialog.setCancelable(false);
+        dialog.setStyle(DialogFragment.STYLE_NORMAL, R.style.AlertDialogTheme);
+        if (_positiveTitle != null) dialog.setPositiveButton(_positiveTitle);
+        if (_negativeTitle != null) dialog.setNegativeButton(_negativeTitle);
 
-        if (_positiveTitle != null)
-            ab.setPositiveButton(_positiveTitle, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (_listener != null) _listener.onPositive();
-            }
-        });
-        if (_negativeTitle != null)
-            ab.setNegativeButton(_negativeTitle, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    if (_listener != null) _listener.onNegative();
-                }
-            });
-        Dialog dialog = ab.create();
-        dialog.show();
+        dialog.show(getFragmentManager(), "");
+
     }
-
 
 }
