@@ -32,8 +32,9 @@ public final class HomeFragment extends BaseFragment implements OnCustomClickLis
     }
 
     @Override
-    protected final void setAbTitle() {
+    protected final void setActionBar() {
         mActionBar.setTitle(getString(R.string.home));
+        mActionBar.setDisplayHomeAsUpEnabled(false);
     }
 
     @OnClick (R.id.disconnect_btn_FH)

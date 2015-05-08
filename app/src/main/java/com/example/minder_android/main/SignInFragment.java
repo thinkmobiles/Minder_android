@@ -43,8 +43,9 @@ public final class SignInFragment extends BaseFragment {
     }
 
     @Override
-    protected final void setAbTitle() {
+    protected final void setActionBar() {
         mActionBar.setTitle(getResources().getString(R.string.Sign_in));
+        mActionBar.setDisplayHomeAsUpEnabled(false);
     }
 
     @OnClick (R.id.login_button_FL)

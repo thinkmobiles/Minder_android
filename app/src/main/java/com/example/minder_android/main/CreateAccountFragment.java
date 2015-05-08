@@ -3,6 +3,8 @@ package com.example.minder_android.main;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -34,7 +36,10 @@ public final class CreateAccountFragment extends BaseFragment {
     public final void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
         mController = new CreateAccountFragmentController(this);
+
     }
+
+
 
     @Nullable
     @Override
@@ -45,8 +50,9 @@ public final class CreateAccountFragment extends BaseFragment {
     }
 
     @Override
-    protected final void setAbTitle() {
+    protected final void setActionBar() {
         mActionBar.setTitle(getResources().getString(R.string.Sing_up));
+        mActionBar.setDisplayHomeAsUpEnabled(true);
     }
 
 
