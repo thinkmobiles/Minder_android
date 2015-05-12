@@ -30,7 +30,7 @@ public final class CongratulationFragment extends BaseFragment {
     }
 
     @Override
-    protected final void setActionBar() {
+    protected final void prepareActionBar() {
 
     }
 

@@ -49,7 +49,7 @@ public abstract class BaseActivity extends Activity {
         }
     }
 
-    public final void showDialog(final String _title, final String _message, final OnCustomClickListener _listener, final String _positiveTitle, final String _negativeTitle) {
+    public final void showDialog(final String _title, final String _message, final String _positiveTitle, final String _negativeTitle, final OnCustomClickListener _listener) {
         CustomDialog dialog = new CustomDialog();
         dialog.setTitle(_title);
         dialog.setMessage(_message);

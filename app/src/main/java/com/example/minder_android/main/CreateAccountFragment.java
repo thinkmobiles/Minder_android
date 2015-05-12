@@ -50,7 +50,7 @@ public final class CreateAccountFragment extends BaseFragment {
     }
 
     @Override
-    protected final void setActionBar() {
+    protected final void prepareActionBar() {
         mActionBar.setTitle(getResources().getString(R.string.Sing_up));
         mActionBar.setDisplayHomeAsUpEnabled(true);
     }
@@ -65,7 +65,7 @@ public final class CreateAccountFragment extends BaseFragment {
             getBaseActivity().getFragmentManager().popBackStack();
             getBaseActivity().switchContent(new CongratulationFragment());
         } else {
-            getBaseActivity().showDialog("Input error", check, null, "", "OK");
+            getBaseActivity().showDialog("Input error", check, "", "OK", null );
         }
 
     }

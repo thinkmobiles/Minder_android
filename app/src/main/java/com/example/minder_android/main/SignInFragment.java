@@ -43,7 +43,7 @@ public final class SignInFragment extends BaseFragment {
     }
 
     @Override
-    protected final void setActionBar() {
+    protected final void prepareActionBar() {
         mActionBar.setTitle(getResources().getString(R.string.Sign_in));
         mActionBar.setDisplayHomeAsUpEnabled(false);
     }
@@ -53,7 +53,7 @@ public final class SignInFragment extends BaseFragment {
         if (mController.validID(etMinderId.getText().toString())) {
             getBaseActivity().switchContent(new HomeFragment(), false);
         } else {
-            getBaseActivity().showDialog("Error", "Id is incorrect", null, "OK", "");
+            getBaseActivity().showDialog("Error", "Id is incorrect", "OK", "", null);
         }
     }
 

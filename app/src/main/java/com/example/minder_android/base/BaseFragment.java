@@ -23,12 +23,12 @@ public abstract class BaseFragment extends Fragment {
     public final void onResume() {
         super.onResume();
         if (mActionBar != null) {
-            setActionBar();
+            prepareActionBar();
 
         }
     }
 
-    protected abstract void setActionBar();
+    protected abstract void prepareActionBar();
 
     public final BaseActivity getBaseActivity() {
         return mActivity;

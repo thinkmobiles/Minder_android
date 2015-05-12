@@ -4,7 +4,9 @@ import android.app.Fragment;
 import android.os.Bundle;
 
 import com.example.minder_android.base.BaseActivity;
+import com.example.minder_android.core.HomeService;
 import com.example.minder_android.main.CongratulationFragment;
+import com.example.minder_android.main.HomeFragment;
 import com.example.minder_android.main.SignInFragment;
 
 public final class MainActivity extends BaseActivity {
@@ -14,10 +16,14 @@ public final class MainActivity extends BaseActivity {
         super.onCreate(_savedInstanceState);
         setContentView(R.layout.activity_main);
         getActionBar().setDisplayShowHomeEnabled(false);
-        if (_savedInstanceState == null)
-            switchContent(new SignInFragment(), false);
-        else {
-            switchContent(getFragmentManager().findFragmentByTag(_savedInstanceState.getString("tag")),false);
+        if (_savedInstanceState == null) {
+            if (HomeService.isServiceRunning()) {
+                switchContent(new HomeFragment(), false);
+            } else {
+                switchContent(new SignInFragment(), false);
+            }
+        } else {
+            switchContent(getFragmentManager().findFragmentByTag(_savedInstanceState.getString("tag")), false);
         }
     }
 
@@ -30,13 +36,13 @@ public final class MainActivity extends BaseActivity {
     @Override
     public final void onBackPressed() {
 
-        if(!(getCurrentFragment() instanceof CongratulationFragment)) {
+        if (!(getCurrentFragment() instanceof CongratulationFragment)) {
             super.onBackPressed();
         }
     }
 
 
     private final Fragment getCurrentFragment() {
-        return  getFragmentManager().findFragmentById(R.id.fl_content);
+        return getFragmentManager().findFragmentById(R.id.fl_content);
     }
 }
