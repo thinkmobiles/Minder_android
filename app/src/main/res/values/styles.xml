@@ -1,10 +1,22 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light">
-        <item name="android:actionBarStyle">@style/ActionBarStyle</item>
-        <item name="android:background">@color/gray_light</item>
+    <style name="AppTheme" parent="AppTheme.Base">
+
+
+    </style>
+
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/red</item>
+
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">#F0F</item>
+
+        <!-- colorAccent is used as the default value for colorControlActivated,
+             which is used to tint widgets -->
+        <item name="colorAccent">#0FF</item>
+
     </style>
 
     <!-- Splash screen style-->
@@ -14,7 +26,7 @@
 
     <!-- ActionBar Style -->
     <style name="ActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@color/gray_light</item>
+
         <item name="android:textSize">@dimen/text_big_size</item>
         <item name="android:textColor">@color/blue</item>
         <item name="android:titleTextStyle">@style/TitleColor</item>
@@ -29,7 +41,7 @@
     <!-- widgets components styles -->
     <style name="BaseEditText" parent="@android:style/Widget.Holo.Light.EditText">
         <item name="android:singleLine">true</item>
-        <item name="android:background">@color/background_light_gray</item>
+        <item name="android:background">@drawable/editview_underline</item>
         <item name="android:textColor">@color/main_gray_trans</item>
         <item name="android:textSize">@dimen/text_medium_size</item>
     </style>
@@ -37,10 +49,6 @@
 
     <style name="EditTextMinderId" parent="BaseEditText">
         <item name="android:maxLength">@integer/minder_id_length</item>
-        <item name="android:paddingTop">@dimen/minder_id_padding_top</item>
-        <item name="android:paddingBottom">@dimen/minder_id_padding_bottom</item>
-        <item name="android:layout_marginTop">@dimen/minder_id_margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/minder_id_margin_bottom</item>
     </style>
 
     <style name="EditTextFirstName" parent="BaseEditText">

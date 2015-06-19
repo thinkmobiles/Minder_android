@@ -32,22 +32,28 @@ public final class SignInFragment extends BaseFragment {
         mController = new SignInFragmentController(this);
     }
 
+    @Override
+    protected void prepareToolBar() {
+        mToolbar.setTitle(getResources().getString(R.string.Sign_in));
+        mToolbar.setNavigationIcon(null);
+    }
+
     @Nullable
     @Override
     public final View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
         View view = _inflater.inflate(R.layout.fragment_login, _container, false);
         ButterKnife.inject(this, view);
-        getBaseActivity().setActionBar(true);
+        //getBaseActivity().setActionBar(true);
         etMinderId.setText(mController.getMinderId());
         return view;
     }
-
+/*
     @Override
     protected final void prepareActionBar() {
         mActionBar.setTitle(getResources().getString(R.string.Sign_in));
         mActionBar.setDisplayHomeAsUpEnabled(false);
     }
-
+*/
     @OnClick (R.id.login_button_FL)
     final void onLoginClicked(){
         if (mController.validID(etMinderId.getText().toString())) {
@@ -59,7 +65,7 @@ public final class SignInFragment extends BaseFragment {
 
     @OnClick (R.id.create_account_button_FL)
     final void onCreateAccountClicked() {
-        getBaseActivity().switchContent(new CreateAccountFragment());
+        getBaseActivity().switchContent(new CreateAccountFragment(), true);
     }
 
 }

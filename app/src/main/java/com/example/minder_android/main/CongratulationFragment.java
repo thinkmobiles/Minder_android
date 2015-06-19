@@ -25,14 +25,15 @@ public final class CongratulationFragment extends BaseFragment {
     public final View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
         View view = _inflater.inflate(R.layout.fragment_congratulation, _container,false);
         ButterKnife.inject(this, view);
-        getBaseActivity().setActionBar(false);
+        //getBaseActivity().setActionBar(false);
         return view;
     }
-
+/*
     @Override
     protected final void prepareActionBar() {
 
     }
+*/
 
     @OnClick (R.id.ok_button_FC)
     final void onClick() {
@@ -40,4 +41,8 @@ public final class CongratulationFragment extends BaseFragment {
         getBaseActivity().switchContent(new SignInFragment(), false);
     }
 
+    @Override
+    protected void prepareToolBar() {
+
+    }
 }

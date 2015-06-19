@@ -39,6 +39,11 @@ public final class CreateAccountFragment extends BaseFragment {
 
     }
 
+    @Override
+    protected void prepareToolBar() {
+        mToolbar.setTitle(getResources().getString(R.string.Sing_up));
+        mToolbar.setNavigationIcon(R.drawable.icn_back_bar);
+    }
 
 
     @Nullable
@@ -48,13 +53,14 @@ public final class CreateAccountFragment extends BaseFragment {
         ButterKnife.inject(this, view);
         return view;
     }
-
+/*
     @Override
     protected final void prepareActionBar() {
         mActionBar.setTitle(getResources().getString(R.string.Sing_up));
         mActionBar.setDisplayHomeAsUpEnabled(true);
-    }
 
+    }
+*/
 
     @OnClick (R.id.button_signup_FCA)
     final void onSignUpClicked() {

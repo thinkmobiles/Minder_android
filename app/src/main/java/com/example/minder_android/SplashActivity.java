@@ -3,14 +3,15 @@ package com.example.minder_android;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.example.minder_android.core.Const;
 
 /**
  * Created by ���� on 05.05.2015.
  */
-public final class SplashActivity extends Activity {
-
+public final class SplashActivity extends AppCompatActivity {
 
     @Override
     public final void onCreate(final Bundle _savedInstanceState) {

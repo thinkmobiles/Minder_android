@@ -33,11 +33,16 @@ public final class HomeFragment extends BaseFragment {
         mController = new HomeFragmentController(this);
    }
 
+    @Override
+    protected void prepareToolBar() {
+
+    }
+
     @Nullable
     @Override
     public final View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
         View view = _inflater.inflate(R.layout.fragment_home, _container, false);
-        getBaseActivity().setActionBar(true);
+        //getBaseActivity().setActionBar(true);
         ButterKnife.inject(this, view);
         mController.onCreateView();
 
@@ -51,12 +56,12 @@ public final class HomeFragment extends BaseFragment {
         super.onDestroy();
     }
 
-    @Override
+    /*@Override
     protected final void prepareActionBar() {
         mActionBar.setTitle(getString(R.string.home));
         mActionBar.setDisplayHomeAsUpEnabled(false);
     }
-
+*/
     @OnClick (R.id.disconnect_btn_FH)
     final void onDisconnectClicked() {
         getBaseActivity().showDialog("Exit", "Are you sure?", "Yes", "No", new OnCustomClickListener() {
