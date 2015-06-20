@@ -1,6 +1,5 @@
 package com.example.minder_android.base;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
@@ -8,7 +7,6 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -22,16 +20,16 @@ import com.example.minder_android.core.OnCustomClickListener;
  * Created by ���� on 05.05.2015.
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    private Toolbar toolbar;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
@@ -63,20 +61,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public final void setToolbarVisibility(final boolean _visible) {
-        if (toolbar != null) {
-            toolbar.setVisibility(_visible ? View.VISIBLE : View.GONE);
-        }
+    public Toolbar getToolbar(){
+        return mToolbar;
     }
-
-    public final void setActionBar(boolean _visible) {
-        final ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            if (_visible) actionBar.show();
-            else actionBar.hide();
-        }
-    }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -89,9 +76,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public final void showDialog(final String _title, final String _message, final String _positiveTitle, final String _negativeTitle, final OnCustomClickListener _listener) {
+    public final void showDialog(final String _message, final String _positiveTitle, final String _negativeTitle, final OnCustomClickListener _listener) {
         CustomDialog dialog = new CustomDialog();
-        dialog.setTitle(_title);
         dialog.setMessage(_message);
         dialog.setOnCustomClickListener(_listener);
         dialog.setCancelable(false);

@@ -1,6 +1,6 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="main_padding">25dp</dimen>
+    <dimen name="main_padding">15dp</dimen>
 
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
@@ -10,28 +10,15 @@
     <dimen name="text_big_size">18sp</dimen>
     <dimen name="extra_big_text_size">33sp</dimen>
 
-    <dimen name="minder_id_padding_top">10sp</dimen>
-    <dimen name="minder_id_padding_bottom">10sp</dimen>
-    <dimen name="minder_id_margin_top">6sp</dimen>
-    <dimen name="minder_id_margin_bottom">25sp</dimen>
+    <dimen name="button_margin_top">40dp</dimen>
 
-    <dimen name="create_account_padding_top">10sp</dimen>
-    <dimen name="create_account_padding_bottom">10sp</dimen>
-    <dimen name="create_account_margin_top">6sp</dimen>
-    <dimen name="create_account_margin_bottom">6sp</dimen>
+    <!--congratulation screen -->
+    <dimen name="congratulation_text_padding_top">20dp</dimen>
+    <dimen name="congratulation_btn_padding_bottom">20dp</dimen>
 
-    <dimen name="congr_title_margin_bottom">20sp</dimen>
+    <!-- home screen -->
+    <dimen name="home_padding_top">20dp</dimen>
+    <dimen name="home_btn_padding_bottom">20dp</dimen>
 
-    <dimen name="login_margin_top">10sp</dimen>
-    <dimen name="login_margin_bottom">10sp</dimen>
-
-    <dimen name="button_margin_top">80sp</dimen>
-    <integer name="minder_id_length">8</integer>
-    <integer name="first_name_length">35</integer>
-    <integer name="last_name_length">35</integer>
-    <integer name="password_length_min">6</integer>
-    <integer name="password_length_max">35</integer>
-
-    <dimen name="button_border_width">3px</dimen>
 
 </resources>

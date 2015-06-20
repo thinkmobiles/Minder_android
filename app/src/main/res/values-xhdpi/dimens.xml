@@ -1,0 +1,5 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="text_btn_size">16sp</dimen>
+    <dimen name="dialog_min_width">450dp</dimen>
+</resources>

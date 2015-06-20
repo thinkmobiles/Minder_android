@@ -7,83 +7,68 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/first_name_title_FCA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/first_name"
-            style="@style/TextBig"/>
         <EditText
             android:id="@+id/first_name_FCA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/EditTextFirstName"/>
+            android:hint="@string/first_name"
+            android:layout_marginBottom="15dp"
+            style="@style/BaseEditText"/>
 
-        <TextView
-            android:id="@+id/last_name_title_FCA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/last_name"
-            style="@style/TextBig"/>
         <EditText
             android:id="@+id/last_name_FCA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/EditTextLastName"/>
+            android:layout_marginBottom="15dp"
+            android:hint="@string/last_name"
+            style="@style/BaseEditText"/>
 
-        <TextView
-            android:id="@+id/email_title_FCA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/email"
-            style="@style/TextBig"/>
         <EditText
             android:id="@+id/email_FCA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/EditTextEmail"/>
+            android:layout_marginBottom="15dp"
+            android:hint="@string/email"
+            style="@style/BaseEditText"/>
 
-        <TextView
-            android:id="@+id/password_title_FCA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/password"
-            style="@style/TextBig"/>
         <EditText
             android:id="@+id/password_FCA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/EditTextPassword"/>
+            android:layout_marginBottom="15dp"
+            android:hint="@string/password"
+            style="@style/BaseEditText"/>
 
-        <TextView
-            android:id="@+id/confirm_password_title_FCA"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/confirm_password"
-            style="@style/TextBig"/>
         <EditText
             android:id="@+id/confirm_password_FCA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/EditTextConfirmPassword"/>
+            android:layout_marginBottom="15dp"
+            android:hint="@string/confirm_password"
+            style="@style/BaseEditText"/>
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/accept_terms_condition"
-                android:textColor="@color/text_white"
+                android:textColor="@color/grey_900"
+                style="@android:style/Widget.Holo.CompoundButton.CheckBox"
+                android:paddingLeft="5dp"
                 android:id="@+id/accept_CB_FCA"
-                />
+                android:typeface="normal" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/button_signup_FCA"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Sing_up"
+                android:src="@drawable/sign_up"
+                android:background="@android:color/transparent"
                 android:layout_marginTop="@dimen/button_margin_top"
-                style="@style/ButtonStyle"/>
+                style="@style/ButtonStyle"
+                android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
 

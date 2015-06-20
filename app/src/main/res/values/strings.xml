@@ -17,7 +17,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm password</string>
-    <string name="accept_terms_condition">I accept terms and conditions</string>
+    <string name="accept_terms_condition"><u>Accept terms and conditions</u></string>
 
     <!-- Congratulation screen -->
     <string name="congratulations">Congratulations</string>

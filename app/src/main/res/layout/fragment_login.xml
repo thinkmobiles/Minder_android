@@ -3,7 +3,6 @@
     android:id="@+id/svRoot_FL"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgnd"
     android:padding="@dimen/main_padding"
     android:scrollbars="none">
 
@@ -15,9 +14,10 @@
 
         <EditText
             android:id="@+id/minder_id_edit_text_fl"
-            style="@style/EditTextMinderId"
+            style="@style/BaseEditText"
             android:layout_width="match_parent"
-
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -26,31 +26,45 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp">
 
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
             <Button
                 android:id="@+id/create_account_button_FL"
+                android:layout_marginRight="5dp"
                 style="@style/ButtonStyle"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/minder_id_edit_text_fl"
                 android:background="@android:color/transparent"
-                android:textColor="@color/main_gray_trans"
                 android:text="@string/create_account"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/login_button_FL"
-                style="@style/ButtonStyle"
+                android:textAllCaps="false"
+                android:textColor="#424242"
+                android:gravity="center_vertical|left"
+                android:layout_gravity="center" />
+            </FrameLayout>
+            <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/log_in"
+                android:layout_weight="1">
 
-                android:layout_weight="1" />
-
+            <ImageButton
+                android:id="@+id/login_button_FL"
+                android:layout_marginLeft="5dp"
+                style="@style/ButtonStyle"
+                android:background="@android:color/transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_log_in"
+                android:layout_gravity="center" />
+            </FrameLayout>
         </LinearLayout>
 
     </LinearLayout>
+
 </FrameLayout>

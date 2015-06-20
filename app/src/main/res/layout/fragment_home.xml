@@ -10,13 +10,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:paddingTop="@dimen/home_padding_top"
         style="@style/TextMedium"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/disconnect_btn_FH"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/disconnect"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/home_btn_padding_bottom"
+        android:src="@drawable/btn_discon"
+        android:background="@android:color/transparent"
+
+
         style="@style/ButtonStyle"/>
 
 </LinearLayout>

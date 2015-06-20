@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.example.minder_android.R;
 
@@ -12,31 +13,28 @@ import com.example.minder_android.R;
  */
 public abstract class BaseFragment extends Fragment {
     private BaseActivity mActivity;
-    protected ActionBar mActionBar;
-    protected Toolbar mToolbar;
 
     @Override
     public void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
         mActivity   = (BaseActivity) getActivity();
-        //mActionBar  = mActivity.getActionBar();
-        mToolbar = (Toolbar) mActivity.findViewById(R.id.toolbar);
     }
 
     @Override
     public final void onResume() {
         super.onResume();
-        if (mToolbar != null) {
+        if (mActivity.getToolbar() != null) {
             prepareToolBar();
         }
-        //if (mActionBar != null) {
-        //    prepareActionBar();
-
-        //}
     }
 
-    //protected abstract void prepareActionBar();
     protected abstract void prepareToolBar();
+
+    public final void setToolbarVisibility(final boolean _visible) {
+        if (mActivity.getToolbar() != null) {
+            mActivity.getToolbar().setVisibility(_visible ? View.VISIBLE : View.GONE);
+        }
+    }
 
     public final BaseActivity getBaseActivity() {
         return mActivity;

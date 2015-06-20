@@ -11,11 +11,12 @@
         <item name="colorPrimary">@color/red</item>
 
         <!-- colorPrimaryDark is used for the status bar -->
-        <item name="colorPrimaryDark">#F0F</item>
+        <item name="colorPrimaryDark">@color/accent</item>
+        <item name="android:textColorPrimary">@color/text_white</item>
 
         <!-- colorAccent is used as the default value for colorControlActivated,
              which is used to tint widgets -->
-        <item name="colorAccent">#0FF</item>
+        <item name="colorAccent">@color/accent</item>
 
     </style>
 
@@ -47,49 +48,6 @@
     </style>
 
 
-    <style name="EditTextMinderId" parent="BaseEditText">
-        <item name="android:maxLength">@integer/minder_id_length</item>
-    </style>
-
-    <style name="EditTextFirstName" parent="BaseEditText">
-        <item name="android:maxLength">@integer/first_name_length</item>
-        <item name="android:paddingTop">@dimen/create_account_padding_top</item>
-        <item name="android:paddingBottom">@dimen/create_account_padding_bottom</item>
-        <item name="android:layout_marginTop">@dimen/create_account_margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/create_account_margin_bottom</item>
-    </style>
-
-    <style name="EditTextLastName" parent="BaseEditText">
-        <item name="android:maxLength">@integer/last_name_length</item>
-        <item name="android:paddingTop">@dimen/create_account_padding_top</item>
-        <item name="android:paddingBottom">@dimen/create_account_padding_bottom</item>
-        <item name="android:layout_marginTop">@dimen/create_account_margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/create_account_margin_bottom</item>
-    </style>
-
-    <style name="EditTextEmail" parent="BaseEditText">
-        <item name="android:paddingTop">@dimen/create_account_padding_top</item>
-        <item name="android:paddingBottom">@dimen/create_account_padding_bottom</item>
-        <item name="android:layout_marginTop">@dimen/create_account_margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/create_account_margin_bottom</item>
-    </style>
-
-    <style name="EditTextPassword" parent="BaseEditText">
-        <item name="android:maxLength">@integer/password_length_max</item>
-        <item name="android:paddingTop">@dimen/create_account_padding_top</item>
-        <item name="android:paddingBottom">@dimen/create_account_padding_bottom</item>
-        <item name="android:layout_marginTop">@dimen/create_account_margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/create_account_margin_bottom</item>
-    </style>
-
-    <style name="EditTextConfirmPassword" parent="BaseEditText">
-        <item name="android:maxLength">@integer/password_length_max</item>
-        <item name="android:paddingTop">@dimen/create_account_padding_top</item>
-        <item name="android:paddingBottom">@dimen/create_account_padding_bottom</item>
-        <item name="android:layout_marginTop">@dimen/create_account_margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/create_account_margin_bottom</item>
-    </style>
-
     <style name="TextExtraBig">
         <item name="android:textSize">@dimen/extra_big_text_size</item>
         <item name="android:textColor">@color/text_black</item>
@@ -106,19 +64,14 @@
     </style>
     
     <style name="ButtonStyle">
-        <item name="android:background">@drawable/button_blue</item>
-        <item name="android:textColor">@color/text_white</item>
-        <item name="android:layout_marginTop">@dimen/login_margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/login_margin_bottom</item>
-    </style>
-
-    <style name="CongratulationTitle" parent="TextExtraBig">
-        <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginBottom">@dimen/congr_title_margin_bottom</item>
+        <item name="android:textSize">@dimen/text_btn_size</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="AlertDialogTheme" parent="android:Theme.Holo.Dialog">
-        <item name="android:background">@color/background_light_gray</item>
+        <item name="android:background">@color/red</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
 

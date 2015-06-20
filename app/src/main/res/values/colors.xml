@@ -6,9 +6,13 @@
     <color name="main_gray_trans">#fe495a6a</color>
     <color name="background_light_gray">#FFC9C9C9</color>
     <color name="blue">#FF1D7688</color>
+    <color name="accent">#bdbdbd</color>
+
+
+    <color name="grey_900">#212121</color>
 
     <color name="red">#FE102C</color>
-    <color name="red_dark">#FE102C</color>
+    <color name="red_dark">#B71c1c</color>
 
 
     

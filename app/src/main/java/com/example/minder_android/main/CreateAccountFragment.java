@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.minder_android.base.BaseFragment;
 import com.example.minder_android.R;
@@ -27,7 +28,6 @@ public final class CreateAccountFragment extends BaseFragment {
     @InjectView(R.id.email_FCA)             EditText etEmail;
     @InjectView(R.id.password_FCA)          EditText etPassword;
     @InjectView(R.id.confirm_password_FCA)  EditText etConfirmPassword;
-    @InjectView(R.id.button_signup_FCA)     Button btnSignUp;
     @InjectView(R.id.accept_CB_FCA)         CheckBox cbAccept;
 
     private CreateAccountFragmentController mController;
@@ -36,15 +36,14 @@ public final class CreateAccountFragment extends BaseFragment {
     public final void onCreate(Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
         mController = new CreateAccountFragmentController(this);
-
     }
 
     @Override
     protected void prepareToolBar() {
-        mToolbar.setTitle(getResources().getString(R.string.Sing_up));
-        mToolbar.setNavigationIcon(R.drawable.icn_back_bar);
+        setToolbarVisibility(true);
+        getBaseActivity().getToolbar().setTitle(getResources().getString(R.string.Sing_up));
+        getBaseActivity().getToolbar().setNavigationIcon(R.drawable.icn_back_bar);
     }
-
 
     @Nullable
     @Override
@@ -53,14 +52,6 @@ public final class CreateAccountFragment extends BaseFragment {
         ButterKnife.inject(this, view);
         return view;
     }
-/*
-    @Override
-    protected final void prepareActionBar() {
-        mActionBar.setTitle(getResources().getString(R.string.Sing_up));
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-
-    }
-*/
 
     @OnClick (R.id.button_signup_FCA)
     final void onSignUpClicked() {
@@ -71,9 +62,7 @@ public final class CreateAccountFragment extends BaseFragment {
             getBaseActivity().getFragmentManager().popBackStack();
             getBaseActivity().switchContent(new CongratulationFragment());
         } else {
-            getBaseActivity().showDialog("Input error", check, "", "OK", null );
+            getBaseActivity().showDialog(check, "OK", null, null );
         }
-
     }
-
 }

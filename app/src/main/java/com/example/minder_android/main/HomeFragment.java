@@ -23,7 +23,7 @@ import butterknife.OnClick;
  * Created by ���� on 06.05.2015.
  */
 public final class HomeFragment extends BaseFragment {
-    @InjectView(R.id.home_TV_FH)                TextView tvHomeScreen;
+    @InjectView(R.id.home_TV_FH)        TextView tvHomeScreen;
 
     private HomeFragmentController mController;
 
@@ -35,14 +35,15 @@ public final class HomeFragment extends BaseFragment {
 
     @Override
     protected void prepareToolBar() {
-
+        setToolbarVisibility(true);
+        getBaseActivity().getToolbar().setTitle(getString(R.string.home));
+        getBaseActivity().getToolbar().setNavigationIcon(null);
     }
 
     @Nullable
     @Override
     public final View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
         View view = _inflater.inflate(R.layout.fragment_home, _container, false);
-        //getBaseActivity().setActionBar(true);
         ButterKnife.inject(this, view);
         mController.onCreateView();
 
@@ -56,15 +57,9 @@ public final class HomeFragment extends BaseFragment {
         super.onDestroy();
     }
 
-    /*@Override
-    protected final void prepareActionBar() {
-        mActionBar.setTitle(getString(R.string.home));
-        mActionBar.setDisplayHomeAsUpEnabled(false);
-    }
-*/
     @OnClick (R.id.disconnect_btn_FH)
     final void onDisconnectClicked() {
-        getBaseActivity().showDialog("Exit", "Are you sure?", "Yes", "No", new OnCustomClickListener() {
+        getBaseActivity().showDialog("Are you sure you what to exit?", "Yes", "No", new OnCustomClickListener() {
             @Override
             public void onPositive() {
                 mController.onDisconnect();
