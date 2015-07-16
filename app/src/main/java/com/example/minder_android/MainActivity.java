@@ -2,14 +2,13 @@ package com.example.minder_android;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import com.example.minder_android.base.BaseActivity;
 import com.example.minder_android.core.HomeService;
 import com.example.minder_android.main.CongratulationFragment;
 import com.example.minder_android.main.HomeFragment;
 import com.example.minder_android.main.SignInFragment;
+import com.example.minder_android.rest.RequestManager;
 
 public final class MainActivity extends BaseActivity {
 
@@ -17,6 +16,8 @@ public final class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(final Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
+
+        RequestManager.registerClient(this);
 
         if (_savedInstanceState == null) {
             if (HomeService.isServiceRunning()) {

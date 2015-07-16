@@ -75,4 +75,13 @@
     </style>
 
 
+    <style name="FCA_scroll_view">
+        <item name="android:isScrollContainer">true</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:fadingEdgeLength">0dp</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:overScrollMode">never</item>
+        <item name="android:fillViewport">true</item>
+    </style>
+
 </resources>

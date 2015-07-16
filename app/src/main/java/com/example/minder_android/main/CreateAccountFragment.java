@@ -3,17 +3,13 @@ package com.example.minder_android.main;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageButton;
 
-import com.example.minder_android.base.BaseFragment;
 import com.example.minder_android.R;
+import com.example.minder_android.base.BaseFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -59,10 +55,18 @@ public final class CreateAccountFragment extends BaseFragment {
                 etEmail.getText().toString(), etPassword.getText().toString(),
                 etConfirmPassword.getText().toString(), cbAccept.isChecked());
         if (check.equals(getString(R.string.successful))) {
-            getBaseActivity().getFragmentManager().popBackStack();
-            getBaseActivity().switchContent(new CongratulationFragment());
+            mController.signUpUser(etFisrtName.getText().toString(), etLastName.getText().toString(),
+                    etEmail.getText().toString(), etPassword.getText().toString());
         } else {
             getBaseActivity().showDialog(check, "OK", null, null );
         }
+    }
+
+    public void onUserCreateSuccess() {
+        getBaseActivity().getFragmentManager().popBackStack();
+        getBaseActivity().switchContent(new CongratulationFragment());
+    }
+
+    public void onUserCreateFailure() {
     }
 }
