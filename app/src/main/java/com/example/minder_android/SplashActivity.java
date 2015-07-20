@@ -1,10 +1,8 @@
 package com.example.minder_android;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import com.example.minder_android.core.Const;
 
@@ -23,7 +21,7 @@ public final class SplashActivity extends AppCompatActivity {
             public void run() {
 
                 try {
-                    sleep(Const.SLEEP_TIME);
+                    sleep(Const.SPLASH_SLEEP_TIME);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {

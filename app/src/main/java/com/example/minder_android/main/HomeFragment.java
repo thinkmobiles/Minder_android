@@ -1,19 +1,15 @@
 package com.example.minder_android.main;
 
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.minder_android.base.BaseFragment;
 import com.example.minder_android.R;
+import com.example.minder_android.base.BaseFragment;
 import com.example.minder_android.core.OnCustomClickListener;
-import com.example.minder_android.core.HomeServiceCallBack;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -59,18 +55,21 @@ public final class HomeFragment extends BaseFragment {
 
     @OnClick (R.id.disconnect_btn_FH)
     final void onDisconnectClicked() {
-        getBaseActivity().showDialog("Are you sure you what to exit?", "Yes", "No", new OnCustomClickListener() {
-            @Override
-            public void onPositive() {
-                mController.onDisconnect();
-                getBaseActivity().switchContent(new SignInFragment(), false);
-            }
+        getBaseActivity().showDialog(getString(R.string.are_u_sure),
+                getString(android.R.string.yes),
+                getString(android.R.string.no),
+                new OnCustomClickListener() {
+                    @Override
+                    public void onPositive() {
+                        mController.onDisconnect();
+                        getBaseActivity().switchContent(new SignInFragment(), false);
+                    }
 
-            @Override
-            public void onNegative() {
+                    @Override
+                    public void onNegative() {
 
-            }
-        });
+                    }
+                });
     }
 
     public void setHomeScreenText(final String _message) {

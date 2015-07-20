@@ -3,8 +3,18 @@ package com.example.minder_android.core;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.widget.Toast;
 
 import com.example.minder_android.R;
+import com.example.minder_android.rest.RequestJsonFactory;
+import com.example.minder_android.rest.RequestManager;
+import com.google.gson.JsonObject;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
+import static com.example.minder_android.core.Const.LOCATION_UPDATE_INTERVAL;
 
 /**
  * Created by Юзер on 08.05.2015.
@@ -47,9 +57,10 @@ public final class HomeService extends Service {
 
                     intent.putExtra(Const.BROADCAST_PARAM_RESULT, mHomeMessage);
                     sendBroadcast(intent);
+                    storeLocationToServer();
                     i++;
                     try {
-                        sleep(3000);
+                        sleep(LOCATION_UPDATE_INTERVAL);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                         return;
@@ -58,6 +69,20 @@ public final class HomeService extends Service {
             }
         };
         mThread.start();
+    }
+
+    private void storeLocationToServer() {
+        RequestManager.storeLocationToServer(RequestJsonFactory.createLocateRequestJson(), new Callback<JsonObject>() {
+            @Override
+            public void success(JsonObject _jsonObject, Response _response) {
+                Toast.makeText(HomeService.this, R.string.location_stored, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void failure(RetrofitError _error) {
+                Toast.makeText(HomeService.this, _error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override

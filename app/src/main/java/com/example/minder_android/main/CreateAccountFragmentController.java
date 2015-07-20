@@ -4,8 +4,10 @@ import android.widget.Toast;
 
 import com.example.minder_android.R;
 import com.example.minder_android.core.Const;
+import com.example.minder_android.core.DeviceParams;
 import com.example.minder_android.core.utils.EmailValidator;
-import com.example.minder_android.core.utils.TinyDB;
+import com.example.minder_android.core.utils.PBarController;
+import com.example.minder_android.rest.RequestJsonFactory;
 import com.example.minder_android.rest.RequestManager;
 import com.google.gson.JsonObject;
 
@@ -18,13 +20,11 @@ import retrofit.client.Response;
  */
 public final class CreateAccountFragmentController {
     private CreateAccountFragment mFragment;
-    private TinyDB mSharedPrefDB;
 
 
 
     public CreateAccountFragmentController(CreateAccountFragment _fragment) {
         mFragment = _fragment;
-        mSharedPrefDB = new TinyDB(mFragment.getActivity());
     }
 
     public final String checkInput(final String _firstName, final String _lastName, final String _email, final String _password, final String _confirmPassword, final boolean _checkTerms) {
@@ -46,13 +46,17 @@ public final class CreateAccountFragmentController {
 
 
     public void signUpUser(final String _firstName, final String _lastName, final String _email, final String _password) {
-        RequestManager.signUpUser(getUserModelJson(_firstName, _lastName, _email, _password), new Callback<JsonObject>() {
+        PBarController.showProgressDialog(mFragment.getActivity());
+        RequestManager.signUpUser(RequestJsonFactory.createSignUpRequestJson(_firstName, _lastName, _email, _password), new Callback<JsonObject>() {
             @Override
             public void success(JsonObject _jsonObject, Response _response) {
+                PBarController.hideProgressDialog();
                 onUserCreateSuccess(_jsonObject);
             }
+
             @Override
             public void failure(RetrofitError _error) {
+                PBarController.hideProgressDialog();
                 Toast.makeText(mFragment.getActivity(), _error.getMessage(), Toast.LENGTH_LONG).show();
 //                mFragment.onUserCreateFailure();
             }
@@ -62,18 +66,9 @@ public final class CreateAccountFragmentController {
 
     private void onUserCreateSuccess(JsonObject _jsonObject) {
         if (_jsonObject.has(Const.KEY_SUCCESS)) {
-            mSharedPrefDB.putString(Const.KEY_MINDER_ID, _jsonObject.get(Const.KEY_MINDER_ID).getAsString());
+            DeviceParams.setMinderId(_jsonObject.get(Const.KEY_MINDER_ID).getAsString());
         }
         mFragment.onUserCreateSuccess();
     }
 
-
-    private JsonObject getUserModelJson(final String _firstName, final String _lastName, final String _email, final String _password) {
-        JsonObject userModel = new JsonObject();
-        userModel.addProperty(Const.KEY_FIRSTNAME, _firstName);
-        userModel.addProperty(Const.KEY_LASTNAME, _lastName);
-        userModel.addProperty(Const.KEY_EMAIL, _email);
-        userModel.addProperty(Const.KEY_PASS, _password);
-        return userModel;
-    }
 }

@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.example.minder_android.R;
 import com.example.minder_android.base.BaseFragment;
+import com.example.minder_android.core.DeviceParams;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -42,7 +43,7 @@ public final class SignInFragment extends BaseFragment {
     public final View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
         View view = _inflater.inflate(R.layout.fragment_login, _container, false);
         ButterKnife.inject(this, view);
-        etMinderId.setText(mController.getMinderId());
+        etMinderId.setText(DeviceParams.getMinderId());
         return view;
     }
 
@@ -59,7 +60,7 @@ public final class SignInFragment extends BaseFragment {
     }
 
     public void onUserSignInFailure() {
-        getBaseActivity().showDialog("Id is incorrect", "OK", null, null);
+        getBaseActivity().showDialog(getString(R.string.id_is_incorrect),getString(android.R.string.ok), null, null);
 
     }
 

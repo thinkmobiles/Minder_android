@@ -4,7 +4,9 @@ import android.app.Fragment;
 import android.os.Bundle;
 
 import com.example.minder_android.base.BaseActivity;
+import com.example.minder_android.core.DeviceParams;
 import com.example.minder_android.core.HomeService;
+import com.example.minder_android.core.LocationController;
 import com.example.minder_android.main.CongratulationFragment;
 import com.example.minder_android.main.HomeFragment;
 import com.example.minder_android.main.SignInFragment;
@@ -18,6 +20,8 @@ public final class MainActivity extends BaseActivity {
         super.onCreate(_savedInstanceState);
 
         RequestManager.registerClient(this);
+        DeviceParams.init(this);
+        LocationController.init(this);
 
         if (_savedInstanceState == null) {
             if (HomeService.isServiceRunning()) {

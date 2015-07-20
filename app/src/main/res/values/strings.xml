@@ -38,5 +38,8 @@
     <string name="confirm_error">Confirmed password doesn`t match to password</string>
     <string name="accept_terms_error">Terms and conditions do not confirm</string>
     <string name="successful">Successfull</string>
+    <string name="location_stored">Location stored</string>
+    <string name="id_is_incorrect">Id is incorrect</string>
+    <string name="are_u_sure">Are you sure you what to disconnect?</string>
 
 </resources>

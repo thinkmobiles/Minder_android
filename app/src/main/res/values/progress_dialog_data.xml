@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- DIMENS -->
+    <dimen name="border_width">2dp</dimen>
+    <dimen name="radius_stroke">4dp</dimen>
+    <dimen name="padding_dialog">15dp</dimen>
+    <dimen name="width_dialog">180dp</dimen>
+    <dimen name="height_dialog">180dp</dimen>
+
+
+    <style name="BGDialog">
+        <item name="android:background">@drawable/bg_dialog_progress</item>
+        <item name="android:padding">@dimen/padding_dialog</item>
+    </style>
+</resources>

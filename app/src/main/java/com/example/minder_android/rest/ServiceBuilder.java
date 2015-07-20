@@ -17,6 +17,7 @@ public final class ServiceBuilder {
                 .setEndpoint(Const.SERVER_URL)
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setClient(new OkClient())
+                .setRequestInterceptor(new RestApiHeaders())
                 .build()
                 .create(RestApiService.class);
     }

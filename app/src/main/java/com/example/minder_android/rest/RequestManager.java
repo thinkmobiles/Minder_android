@@ -24,19 +24,19 @@ public final class RequestManager {
     }
 
     public static void signOutUser(final Callback<JsonObject> _callback) {
-        ServiceBuilder.getApiService().signOutUser( _callback);
+        ServiceBuilder.getApiService().signOutUser(new JsonObject(),  _callback);
     }
 
-    public static void signUpUser(JsonObject _userModel, final Callback<JsonObject> _callback) {
-        ServiceBuilder.getApiService().signUpUser(_userModel, _callback);
+    public static void signUpUser(JsonObject _requestJson, final Callback<JsonObject> _callback) {
+        ServiceBuilder.getApiService().signUpUser(_requestJson, _callback);
     }
 
-    public static void signInUser(JsonObject _userModel, final Callback<JsonObject> _callback) {
-        ServiceBuilder.getApiService().signInUser(_userModel, _callback);
+    public static void signInUser(JsonObject _requestJson, final Callback<JsonObject> _callback) {
+        ServiceBuilder.getApiService().signInUser(_requestJson, _callback);
     }
 
-    public static void locateUser(JsonObject _userModel, final Callback<JsonObject> _callback) {
-        ServiceBuilder.getApiService().locateUser(_userModel, _callback);
+    public static void storeLocationToServer(JsonObject _requestJson, final Callback<JsonObject> _callback) {
+        ServiceBuilder.getApiService().storeLocationToServer(_requestJson, _callback);
     }
 
 }
