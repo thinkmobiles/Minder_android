@@ -14,11 +14,32 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import static com.example.minder_android.core.Const.KEY_LOCATION;
+
+
 /**
  * Created by Max on 20.07.15.
  */
-public class StoreLocationService  extends WakefulIntentService implements LocationController.ILocation {
+public class StoreLocationService  extends WakefulIntentService  {
     private static String DEBUG_TAG = "minder_android : StoreLocationService";
+
+    public StoreLocationService() {
+        super("StoreLocationService");
+    }
+
+
+    @Override
+    protected void doWakefulWork(Intent _intent) {
+        Location location = _intent.getExtras().getParcelable(KEY_LOCATION);
+        storeLocationToServer(location);
+    }
+
+    private void storeLocationToServer(Location _location) {
+        AppSettings.init(getApplicationContext());
+        if (_location == null || !AppSettings.isAppLoggedIn()) { return ;}
+        RestApiHeaders.setCookie(AppSettings.getCookie());
+        RequestManager.storeLocationToServer(RequestJsonFactory.createLocateRequestJson(_location), mCallback);
+    }
 
     private Callback<JsonObject> mCallback = new Callback<JsonObject>() {
         @Override
@@ -32,41 +53,4 @@ public class StoreLocationService  extends WakefulIntentService implements Locat
         }
     };
 
-    public StoreLocationService() {
-        super("StoreLocationService");
-    }
-
-
-    @Override
-    protected void doWakefulWork(Intent _intent) {
-        LocationController.setListener(this);
-        Log.d(DEBUG_TAG, "LISTENER SET");
-        storeLocationToServer();
-    }
-
-
-
-    private void storeLocationToServer() {
-        LocationController.init(getApplicationContext());
-        AppSettings.init(getApplicationContext());
-    }
-
-    @Override
-    public void locationReceived(Location _location) {
-        storeLocationToServer(_location);
-    }
-
-    private void storeLocationToServer(Location _location) {
-        AppSettings.init(getApplicationContext());
-        RestApiHeaders.setCookie(AppSettings.getCookie());
-        RequestManager.storeLocationToServer(RequestJsonFactory.createLocateRequestJson(_location), mCallback);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        LocationController.setListener(null);
-        Log.d(DEBUG_TAG, "LISTENER UNSET");
-
-    }
 }

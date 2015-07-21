@@ -1,16 +1,12 @@
 package com.example.minder_android.core;
 
 import android.content.Context;
-import android.location.Location;
 import android.provider.Settings;
 
 import com.example.minder_android.core.utils.TinyDB;
-import com.example.minder_android.rest.RequestJsonFactory;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import static com.example.minder_android.core.Const.KEY_COOKIE_OUT;
-import static com.example.minder_android.core.Const.KEY_LOCATION;
+import static com.example.minder_android.core.Const.KEY_LOGGED_IN;
 import static com.example.minder_android.core.Const.KEY_MINDER_ID;
 
 /**
@@ -58,18 +54,14 @@ public class AppSettings {
         return mDeviceName;
     }
 
-
-//    public static Time getLastLocationTime(){}
-//    public static void setLastLocationTime(Time _time) {    }
-
-    public static void setLastLocationJson(Location _location) {
-        mSharedPrefDB.putString(KEY_LOCATION, RequestJsonFactory.createLocateRequestJson(_location).toString());
-//        setLastLocationTime();
+    public static boolean isAppLoggedIn() {
+        return mSharedPrefDB.getBoolean(KEY_LOGGED_IN, false);
     }
-    public static JsonObject getLastLocationJson(){
-        JsonParser parser = new JsonParser();
-        return !mSharedPrefDB.getString(KEY_LOCATION).equals("") ? (JsonObject) parser.parse(mSharedPrefDB.getString(KEY_LOCATION)) : null;
+
+    public static void setLoggedIn(boolean _loggedIn) {
+        mSharedPrefDB.putBoolean(KEY_LOGGED_IN, _loggedIn);
     }
+
 
 
 }

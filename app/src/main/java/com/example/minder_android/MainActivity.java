@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import com.example.minder_android.base.BaseActivity;
 import com.example.minder_android.core.AppSettings;
-import com.example.minder_android.core.StoreLocationReceiver;
 import com.example.minder_android.main.CongratulationFragment;
 import com.example.minder_android.main.HomeFragment;
 import com.example.minder_android.main.SignInFragment;
@@ -21,7 +20,7 @@ public final class MainActivity extends BaseActivity {
         RequestManager.registerClient(getApplicationContext());
         AppSettings.init(getApplicationContext());
         if (_savedInstanceState == null) {
-            if (StoreLocationReceiver.isAlarmsScheduled(this)) {
+            if (AppSettings.isAppLoggedIn()) {
                 switchContent(new HomeFragment(), false);
             } else {
                 switchContent(new SignInFragment(), false);

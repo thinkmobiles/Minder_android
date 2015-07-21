@@ -6,7 +6,7 @@ package com.example.minder_android.core;
 public abstract class Const {
     public static final int SPLASH_SLEEP_TIME = 3000;
 //    public static final int LOCATION_UPDATE_INTERVAL = 30 * 60 * 1000; //30 min
-    public static final int LOCATION_UPDATE_INTERVAL = 10000; //test
+    public static final int LOCATION_UPDATE_INTERVAL = 20000; //test
     public static final int MIN_PASSWORD_LENGTH = 6;
 
     public final static String ACTION_STORE_LOCATION        = "com.example.minder_android.core.StoreLocationService.STORE_LOCATION";
@@ -31,5 +31,6 @@ public abstract class Const {
     public static final String KEY_LAT              = "lat";
     public static final String KEY_COOKIE_IN        = "set-cookie";
     public static final String KEY_COOKIE_OUT       = "Cookie";
+    public static final String KEY_LOGGED_IN       = "LoggedIn";
 
 }

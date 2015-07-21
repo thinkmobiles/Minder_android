@@ -1,10 +1,8 @@
 package com.example.minder_android.rest;
 
-import android.content.Context;
 import android.location.Location;
 
 import com.example.minder_android.core.AppSettings;
-import com.example.minder_android.core.LocationController;
 import com.google.gson.JsonObject;
 
 import static com.example.minder_android.core.Const.KEY_DEVICE_ID;
@@ -23,22 +21,7 @@ import static com.example.minder_android.core.Const.KEY_PASS;
  */
 public class RequestJsonFactory {
 
-    public static JsonObject createLocateRequestJson(Context _context){
-        LocationController.init(_context);
-        if (LocationController.getCurrentLocation() == null) {
-            return null;
-        }
-        JsonObject location = new JsonObject();
-        location.addProperty(KEY_LAT, LocationController.getCurrentLocation().getLatitude());
-        location.addProperty(KEY_LONG, LocationController.getCurrentLocation().getLongitude());
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty(KEY_MINDER_ID, AppSettings.getMinderId());
-        jsonObject.addProperty(KEY_DEVICE_ID, AppSettings.getDeviceId());
-        jsonObject.add(KEY_LOCATION, location);
-        return jsonObject;
-    }
-
-    public static JsonObject createLocateRequestJson(Location _location){
+    public static JsonObject createLocateRequestJson(Location _location) {
         JsonObject location = new JsonObject();
         location.addProperty(KEY_LAT, _location.getLatitude());
         location.addProperty(KEY_LONG, _location.getLongitude());
