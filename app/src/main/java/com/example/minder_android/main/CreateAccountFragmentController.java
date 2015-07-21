@@ -3,8 +3,8 @@ package com.example.minder_android.main;
 import android.widget.Toast;
 
 import com.example.minder_android.R;
+import com.example.minder_android.core.AppSettings;
 import com.example.minder_android.core.Const;
-import com.example.minder_android.core.DeviceParams;
 import com.example.minder_android.core.utils.EmailValidator;
 import com.example.minder_android.core.utils.PBarController;
 import com.example.minder_android.rest.RequestJsonFactory;
@@ -66,7 +66,7 @@ public final class CreateAccountFragmentController {
 
     private void onUserCreateSuccess(JsonObject _jsonObject) {
         if (_jsonObject.has(Const.KEY_SUCCESS)) {
-            DeviceParams.setMinderId(_jsonObject.get(Const.KEY_MINDER_ID).getAsString());
+            AppSettings.setMinderId(_jsonObject.get(Const.KEY_MINDER_ID).getAsString());
         }
         mFragment.onUserCreateSuccess();
     }

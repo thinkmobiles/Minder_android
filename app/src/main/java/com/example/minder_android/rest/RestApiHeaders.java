@@ -1,5 +1,7 @@
 package com.example.minder_android.rest;
 
+import com.example.minder_android.core.AppSettings;
+
 import retrofit.RequestInterceptor;
 
 import static com.example.minder_android.core.Const.KEY_COOKIE_OUT;
@@ -12,10 +14,13 @@ public class RestApiHeaders implements RequestInterceptor {
 
     public static void setCookie(String _cookie) {
         mCookie = _cookie;
+        AppSettings.setCookie(mCookie);
+
     }
 
     public static void clearCookie() {
         mCookie = null;
+        AppSettings.clearCookie();
     }
 
     @Override public void intercept(RequestInterceptor.RequestFacade request) {

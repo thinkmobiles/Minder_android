@@ -41,5 +41,6 @@
     <string name="location_stored">Location stored</string>
     <string name="id_is_incorrect">Id is incorrect</string>
     <string name="are_u_sure">Are you sure you what to disconnect?</string>
+    <string name="connected">Connected to service</string>
 
 </resources>

@@ -5,12 +5,11 @@ package com.example.minder_android.core;
  */
 public abstract class Const {
     public static final int SPLASH_SLEEP_TIME = 3000;
-    public static final int LOCATION_UPDATE_INTERVAL = 30000;
+//    public static final int LOCATION_UPDATE_INTERVAL = 30 * 60 * 1000; //30 min
+    public static final int LOCATION_UPDATE_INTERVAL = 10000; //test
     public static final int MIN_PASSWORD_LENGTH = 6;
 
-
-    public final static String BROADCAST_ACTION = "Minder_ID.HomeService";
-    public final static String BROADCAST_PARAM_RESULT = "home_string";
+    public final static String ACTION_STORE_LOCATION        = "com.example.minder_android.core.StoreLocationService.STORE_LOCATION";
 
     public static final String SERVER_URL = "http://134.249.164.53:8877"; //production
 //    public static final String SERVER_URL = "http://134.249.164.53:8829/"; //debug

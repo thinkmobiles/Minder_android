@@ -5,6 +5,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import static com.example.minder_android.core.Const.LOCATION_UPDATE_INTERVAL;
 
@@ -14,13 +15,17 @@ import static com.example.minder_android.core.Const.LOCATION_UPDATE_INTERVAL;
 public class LocationController {
     private static LocationManager mLocationManager;
     private static Location mCurrentLocation;
+    private static ILocation mListener;
+    private static String DEBUG_TAG = "minder_android : LocationController";
+
 
     public static Location getCurrentLocation() {
         return mCurrentLocation;
     }
 
-    public static void setCurrentLocation(Location _location) {
+    private static void setCurrentLocation(Location _location) {
         mCurrentLocation = _location;
+        AppSettings.setLastLocationJson(_location);
     }
 
     public static void init(Context _context) {
@@ -30,6 +35,12 @@ public class LocationController {
             public void onLocationChanged(Location location) {
                 // Called when a new location is found by the network location provider.
                 setCurrentLocation(location);
+                Log.d(DEBUG_TAG, "LOCATION SET, INVOKING LISTENER");
+
+                if (mListener != null) {
+                    Log.d(DEBUG_TAG, "INVOKED LISTENER");
+                    mListener.locationReceived(location);
+                }
             }
 
             public void onStatusChanged(String provider, int status, Bundle extras) {}
@@ -52,5 +63,13 @@ public class LocationController {
         if (mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
             mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_UPDATE_INTERVAL, 0, locationListener);
         }
+    }
+
+    public static void setListener(ILocation _listener) {
+        mListener = _listener;
+    }
+
+    public interface ILocation {
+        void locationReceived(Location _location);
     }
 }

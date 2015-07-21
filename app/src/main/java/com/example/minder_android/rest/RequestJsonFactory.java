@@ -1,6 +1,9 @@
 package com.example.minder_android.rest;
 
-import com.example.minder_android.core.DeviceParams;
+import android.content.Context;
+import android.location.Location;
+
+import com.example.minder_android.core.AppSettings;
 import com.example.minder_android.core.LocationController;
 import com.google.gson.JsonObject;
 
@@ -20,31 +23,46 @@ import static com.example.minder_android.core.Const.KEY_PASS;
  */
 public class RequestJsonFactory {
 
-    public static JsonObject createLocateRequestJson(){
+    public static JsonObject createLocateRequestJson(Context _context){
+        LocationController.init(_context);
+        if (LocationController.getCurrentLocation() == null) {
+            return null;
+        }
         JsonObject location = new JsonObject();
         location.addProperty(KEY_LAT, LocationController.getCurrentLocation().getLatitude());
         location.addProperty(KEY_LONG, LocationController.getCurrentLocation().getLongitude());
-        JsonObject model = new JsonObject();
-        model.addProperty(KEY_MINDER_ID, DeviceParams.getMinderId());
-        model.addProperty(KEY_DEVICE_ID, DeviceParams.getDeviceId());
-        model.add(KEY_LOCATION, location);
-        return model;
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty(KEY_MINDER_ID, AppSettings.getMinderId());
+        jsonObject.addProperty(KEY_DEVICE_ID, AppSettings.getDeviceId());
+        jsonObject.add(KEY_LOCATION, location);
+        return jsonObject;
+    }
+
+    public static JsonObject createLocateRequestJson(Location _location){
+        JsonObject location = new JsonObject();
+        location.addProperty(KEY_LAT, _location.getLatitude());
+        location.addProperty(KEY_LONG, _location.getLongitude());
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty(KEY_MINDER_ID, AppSettings.getMinderId());
+        jsonObject.addProperty(KEY_DEVICE_ID, AppSettings.getDeviceId());
+        jsonObject.add(KEY_LOCATION, location);
+        return jsonObject;
     }
 
     public static JsonObject createSignInRequestJson(String _mindId) {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty(KEY_MINDER_ID, _mindId);
-        jsonObject.addProperty(KEY_DEVICE_ID, DeviceParams.getDeviceId());
-        jsonObject.addProperty(KEY_NAME, DeviceParams.getDeviceName());
+        jsonObject.addProperty(KEY_DEVICE_ID, AppSettings.getDeviceId());
+        jsonObject.addProperty(KEY_NAME, AppSettings.getDeviceName());
         return jsonObject;
     }
 
     public static JsonObject createSignUpRequestJson(final String _firstName, final String _lastName, final String _email, final String _password) {
-        JsonObject model = new JsonObject();
-        model.addProperty(KEY_FIRSTNAME, _firstName);
-        model.addProperty(KEY_LASTNAME, _lastName);
-        model.addProperty(KEY_EMAIL, _email);
-        model.addProperty(KEY_PASS, _password);
-        return model;
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty(KEY_FIRSTNAME, _firstName);
+        jsonObject.addProperty(KEY_LASTNAME, _lastName);
+        jsonObject.addProperty(KEY_EMAIL, _email);
+        jsonObject.addProperty(KEY_PASS, _password);
+        return jsonObject;
     }
 }

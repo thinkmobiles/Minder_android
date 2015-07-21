@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import com.example.minder_android.R;
 import com.example.minder_android.base.BaseFragment;
-import com.example.minder_android.core.DeviceParams;
+import com.example.minder_android.core.AppSettings;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -43,7 +43,7 @@ public final class SignInFragment extends BaseFragment {
     public final View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
         View view = _inflater.inflate(R.layout.fragment_login, _container, false);
         ButterKnife.inject(this, view);
-        etMinderId.setText(DeviceParams.getMinderId());
+        etMinderId.setText(AppSettings.getMinderId());
         return view;
     }
 

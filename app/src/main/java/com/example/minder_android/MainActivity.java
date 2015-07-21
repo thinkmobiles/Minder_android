@@ -4,9 +4,8 @@ import android.app.Fragment;
 import android.os.Bundle;
 
 import com.example.minder_android.base.BaseActivity;
-import com.example.minder_android.core.DeviceParams;
-import com.example.minder_android.core.HomeService;
-import com.example.minder_android.core.LocationController;
+import com.example.minder_android.core.AppSettings;
+import com.example.minder_android.core.StoreLocationReceiver;
 import com.example.minder_android.main.CongratulationFragment;
 import com.example.minder_android.main.HomeFragment;
 import com.example.minder_android.main.SignInFragment;
@@ -19,12 +18,10 @@ public final class MainActivity extends BaseActivity {
     protected void onCreate(final Bundle _savedInstanceState) {
         super.onCreate(_savedInstanceState);
 
-        RequestManager.registerClient(this);
-        DeviceParams.init(this);
-        LocationController.init(this);
-
+        RequestManager.registerClient(getApplicationContext());
+        AppSettings.init(getApplicationContext());
         if (_savedInstanceState == null) {
-            if (HomeService.isServiceRunning()) {
+            if (StoreLocationReceiver.isAlarmsScheduled(this)) {
                 switchContent(new HomeFragment(), false);
             } else {
                 switchContent(new SignInFragment(), false);
