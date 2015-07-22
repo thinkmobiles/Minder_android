@@ -3,7 +3,8 @@ package com.example.minder_android.main;
 import android.widget.Toast;
 
 import com.example.minder_android.core.AppSettings;
-import com.example.minder_android.core.LocationController;
+import com.example.minder_android.core.StoreLocationReceiver;
+import com.example.minder_android.core.location_api.LocationAPI;
 import com.example.minder_android.core.utils.PBarController;
 import com.example.minder_android.rest.RequestManager;
 import com.example.minder_android.rest.RestApiHeaders;
@@ -45,7 +46,7 @@ public final class HomeFragmentController {
                 Toast.makeText(mFragment.getActivity(), _error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-        LocationController.unsubscribeLocationUpdates(mFragment.getBaseActivity());
+        LocationAPI.unsubscribeLocationUpdates(mFragment.getBaseActivity(), StoreLocationReceiver.class);
         AppSettings.setLoggedIn(false);
     }
 

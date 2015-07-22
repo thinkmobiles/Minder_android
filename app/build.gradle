@@ -32,4 +32,5 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.4.0'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.commonsware.cwac:wakeful:1.0.+'
+    compile 'com.google.android.gms:play-services:7.5.0'
 }

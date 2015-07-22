@@ -3,7 +3,8 @@ package com.example.minder_android.main;
 import android.widget.Toast;
 
 import com.example.minder_android.core.AppSettings;
-import com.example.minder_android.core.LocationController;
+import com.example.minder_android.core.StoreLocationReceiver;
+import com.example.minder_android.core.location_api.LocationAPI;
 import com.example.minder_android.core.utils.PBarController;
 import com.example.minder_android.rest.RequestJsonFactory;
 import com.example.minder_android.rest.RequestManager;
@@ -65,7 +66,7 @@ public final class SignInFragmentController {
     private void onUserSignInSuccess(JsonObject _jsonObject, Response _response) {
         String cookie = getCookieIdFromResponse(_response);
         RestApiHeaders.setCookie(cookie);
-        LocationController.subscribeLocationUpdates(mFragment.getBaseActivity());
+        LocationAPI.subscribeLocationUpdates(mFragment.getBaseActivity(), StoreLocationReceiver.class);
         AppSettings.setLoggedIn(true);
         mFragment.onUserSignInSuccess();
     }
