@@ -14,7 +14,7 @@ public class RestApiHeaders implements RequestInterceptor {
 
     public static void setCookie(String _cookie) {
         mCookie = _cookie;
-        AppSettings.setCookie(mCookie);
+        AppSettings.storeCookie(mCookie);
 
     }
 

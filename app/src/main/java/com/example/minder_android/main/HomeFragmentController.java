@@ -45,7 +45,7 @@ public final class HomeFragmentController {
                 Toast.makeText(mFragment.getActivity(), _error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-        LocationController.removeLocationUpdates(mFragment.getBaseActivity());
+        LocationController.unsubscribeLocationUpdates(mFragment.getBaseActivity());
         AppSettings.setLoggedIn(false);
     }
 

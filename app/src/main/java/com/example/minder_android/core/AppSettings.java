@@ -29,7 +29,7 @@ public class AppSettings {
         return mSharedPrefDB.getString(KEY_COOKIE_OUT);
     }
 
-    public static void setCookie(String _cookie) {
+    public static void storeCookie(String _cookie) {
         mSharedPrefDB.putString(KEY_COOKIE_OUT, _cookie);
     }
 

@@ -12,18 +12,17 @@ import static com.example.minder_android.core.Const.LOCATION_UPDATE_INTERVAL;
  * Created by Max on 17.07.15.
  */
 public class LocationController {
-    private static LocationManager mLocationManager;
     private static String DEBUG_TAG = "minder_android : LocationController";
 
-    public static void init(final Context _context) {
-        mLocationManager = (LocationManager) _context.getSystemService(Context.LOCATION_SERVICE);
+    public static void subscribeLocationUpdates(final Context _context) {
+        LocationManager locationManager =  (LocationManager) _context.getSystemService(Context.LOCATION_SERVICE);
 
-        if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_UPDATE_INTERVAL, 0,
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_UPDATE_INTERVAL, 0,
                     createPendingIntent(_context));
         }
-        if (mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-            mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_UPDATE_INTERVAL, 0,
+        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_UPDATE_INTERVAL, 0,
                     createPendingIntent(_context));
         }
     }
@@ -32,11 +31,9 @@ public class LocationController {
         return PendingIntent.getBroadcast(_context, 0, createStoreLocationReceiverIntent(_context), 0);
     }
 
-    public static void removeLocationUpdates(Context _context) {
-        if (mLocationManager == null) {
-            mLocationManager = (LocationManager) _context.getSystemService(Context.LOCATION_SERVICE);
-        }
-        mLocationManager.removeUpdates(PendingIntent.getBroadcast(_context, 0, createStoreLocationReceiverIntent(_context), 0));
+    public static void unsubscribeLocationUpdates(Context _context) {
+        LocationManager locationManager =  (LocationManager) _context.getSystemService(Context.LOCATION_SERVICE);
+        locationManager.removeUpdates(PendingIntent.getBroadcast(_context, 0, createStoreLocationReceiverIntent(_context), 0));
     }
 
     private static Intent createStoreLocationReceiverIntent(Context _context) {
