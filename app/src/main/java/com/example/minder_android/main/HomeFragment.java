@@ -2,6 +2,7 @@ package com.example.minder_android.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public final class HomeFragment extends BaseFragment {
     public final View onCreateView(final LayoutInflater _inflater, final ViewGroup _container, final Bundle _savedInstanceState) {
         View view = _inflater.inflate(R.layout.fragment_home, _container, false);
         ButterKnife.inject(this, view);
+        tvHomeScreen.setMovementMethod(new ScrollingMovementMethod());
         mController.onCreateView();
 
         return view;
@@ -76,4 +78,7 @@ public final class HomeFragment extends BaseFragment {
         tvHomeScreen.setText(_message);
     }
 
+    public String getHomeStringText() {
+        return tvHomeScreen.getText().toString();
+    }
 }

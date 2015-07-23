@@ -18,7 +18,15 @@ class AOSPLocationAdapter extends AbsLocationAdapter {
 
     @Override
     public void subscribeLocationUpdates(Class<? extends BroadcastReceiver> _subscriber) {
+        super.subscribeLocationUpdates(_subscriber);
+
         LocationManager locationManager =  (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
+
+        if (!(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
+                || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))) {
+            mConnectionListener.onConnectionFailed();
+            return;
+        }
 
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_UPDATE_INTERVAL, 0,
@@ -28,10 +36,12 @@ class AOSPLocationAdapter extends AbsLocationAdapter {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_UPDATE_INTERVAL, 0,
                     createPendingIntent(_subscriber));
         }
+        mConnectionListener.onConnected();
     }
 
     @Override
     public void unsubscribeLocationUpdates(Class<? extends BroadcastReceiver> _subscriber) {
+        super.subscribeLocationUpdates(_subscriber);
         LocationManager locationManager =  (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
         locationManager.removeUpdates(createPendingIntent(_subscriber));
     }

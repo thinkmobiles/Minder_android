@@ -42,5 +42,9 @@
     <string name="id_is_incorrect">Id is incorrect</string>
     <string name="are_u_sure">Are you sure you what to disconnect?</string>
     <string name="connected">Connected to service</string>
+    <string name="no_fused">No fused location provider available</string>
+    <string name="no_location_profider_available">No location provider available</string>
+    <string name="location_api_connection_error">Location API connection error</string>
+    <string name="error_storing_location">ERROR STORING LOCATION:</string>
 
 </resources>

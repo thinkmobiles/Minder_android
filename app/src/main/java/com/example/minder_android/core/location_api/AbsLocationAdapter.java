@@ -12,13 +12,20 @@ import static com.example.minder_android.core.Const.ACTION_STORE_LOCATION;
  */
 abstract class AbsLocationAdapter {
     protected Context mContext;
+    protected IConnection mConnectionListener;
+    protected Class mSubscriber;
+
 
     public AbsLocationAdapter(Context _context) {
         this.mContext = _context;
     }
 
-    public abstract void subscribeLocationUpdates(Class<? extends BroadcastReceiver> _subscriber) ;
-    public abstract void unsubscribeLocationUpdates(Class<? extends BroadcastReceiver> _subscriber) ;
+    public  void subscribeLocationUpdates(Class<? extends BroadcastReceiver> _subscriber){
+        mSubscriber = _subscriber;
+    };
+    public  void unsubscribeLocationUpdates(Class<? extends BroadcastReceiver> _subscriber){
+        mSubscriber = _subscriber;
+    };
 
 
     // dirty hack ?
@@ -35,5 +42,17 @@ abstract class AbsLocationAdapter {
         Intent i=new Intent(mContext, _subscriber);
         i.setAction(ACTION_STORE_LOCATION);
         return i;
+    }
+
+    protected void setConnectionListener(IConnection _listener) {
+        this.mConnectionListener = _listener;
+    }
+    protected void removeConnectionListener() {
+        this.mConnectionListener = null;
+    }
+
+    interface IConnection {
+        void onConnected();
+        void onConnectionFailed();
     }
 }

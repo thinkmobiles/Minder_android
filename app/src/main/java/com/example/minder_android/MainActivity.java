@@ -1,10 +1,12 @@
 package com.example.minder_android;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.minder_android.base.BaseActivity;
 import com.example.minder_android.core.AppSettings;
+import com.example.minder_android.core.location_api.LocationAPIController;
 import com.example.minder_android.main.CongratulationFragment;
 import com.example.minder_android.main.HomeFragment;
 import com.example.minder_android.main.SignInFragment;
@@ -49,4 +51,12 @@ public final class MainActivity extends BaseActivity {
     private final Fragment getCurrentFragment() {
         return getFragmentManager().findFragmentById(R.id.fl_content);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        LocationAPIController locationAPIController = new LocationAPIController(this);
+        locationAPIController.getUIHelper().onActivityResult(requestCode, resultCode, data);
+    }
+
 }

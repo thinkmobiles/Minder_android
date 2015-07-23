@@ -11,8 +11,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:paddingTop="@dimen/home_padding_top"
+        android:maxLines = "500"
+        android:scrollbars = "vertical"
         style="@style/TextMedium"
-        android:text="@string/connected" />
+        />
 
     <ImageButton
         android:id="@+id/disconnect_btn_FH"

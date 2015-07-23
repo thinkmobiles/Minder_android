@@ -58,7 +58,6 @@ public final class CreateAccountFragmentController {
             public void failure(RetrofitError _error) {
                 PBarController.hideProgressDialog();
                 Toast.makeText(mFragment.getActivity(), _error.getMessage(), Toast.LENGTH_LONG).show();
-//                mFragment.onUserCreateFailure();
             }
         });
     }

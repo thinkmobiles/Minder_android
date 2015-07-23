@@ -2,14 +2,19 @@ package com.example.minder_android.main;
 
 import android.widget.Toast;
 
+import com.example.minder_android.R;
 import com.example.minder_android.core.AppSettings;
 import com.example.minder_android.core.StoreLocationReceiver;
-import com.example.minder_android.core.location_api.LocationAPI;
+import com.example.minder_android.core.events.LocationApiConnectionEvent;
+import com.example.minder_android.core.events.StoreLocationEvent;
+import com.example.minder_android.core.location_api.LocationAPIController;
+import com.example.minder_android.core.utils.DateTimeConverter;
 import com.example.minder_android.core.utils.PBarController;
 import com.example.minder_android.rest.RequestManager;
 import com.example.minder_android.rest.RestApiHeaders;
 import com.google.gson.JsonObject;
 
+import de.greenrobot.event.EventBus;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -28,6 +33,8 @@ public final class HomeFragmentController {
     }
 
     public final void onCreateView(){
+        EventBus.getDefault().registerSticky(this);
+
     }
 
     public final void onDisconnect() {
@@ -46,12 +53,20 @@ public final class HomeFragmentController {
                 Toast.makeText(mFragment.getActivity(), _error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-        LocationAPI.unsubscribeLocationUpdates(mFragment.getBaseActivity(), StoreLocationReceiver.class);
+
+        LocationAPIController apiController = new LocationAPIController(mFragment.getActivity());
+        apiController.unsubscribeLocationUpdates(StoreLocationReceiver.class);
         AppSettings.setLoggedIn(false);
     }
 
     public final void onDestroy() {
+        EventBus.getDefault().unregister(this);
     }
 
-
+    public void onEvent(LocationApiConnectionEvent _event){
+        mFragment.setHomeScreenText(mFragment.getString(_event.isConnected ? R.string.connected : R.string.location_api_connection_error));
+    };
+    public void onEvent(StoreLocationEvent _event){
+        mFragment.setHomeScreenText(String.format("%s \n %s : %s ",mFragment.getHomeStringText(), DateTimeConverter.getCurrentDateTime(), _event.Message));
+    };
 }
