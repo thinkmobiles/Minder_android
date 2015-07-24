@@ -23,10 +23,10 @@ public final class MainActivity extends BaseActivity {
 
         RequestManager.registerClient(getApplicationContext());
         AppSettings.init(getApplicationContext());
-        LocationAPIController.INSTANCE.setContext(this);
+        LocationAPIController controller = LocationAPIController.INSTANCE.setContext(this);
         if (_savedInstanceState == null) {
 //            if (AppSettings.isAppLoggedIn()) {
-            if (LocationAPIController.INSTANCE.isSubscribedLocationUpdates(StoreLocationReceiver.class)) {
+            if (controller.isSubscribedLocationUpdates(StoreLocationReceiver.class)) {
                 switchContent(new HomeFragment(), false);
             } else {
                 switchContent(new SignInFragment(), false);

@@ -27,7 +27,7 @@ class AOSPLocationAdapter extends AbsLocationAdapter {
 
         if (!(locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
                 || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))) {
-            mConnectionListener.onConnectionFailed();
+            mSubscriptionResultListener.onFailure();
             return;
         }
 
@@ -39,7 +39,7 @@ class AOSPLocationAdapter extends AbsLocationAdapter {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_UPDATE_INTERVAL, 0,
                     createPendingIntent(_subscriber));
         }
-        mConnectionListener.onConnected();
+        mSubscriptionResultListener.onSuccess();
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.location.Location;
 import android.location.LocationManager;
 
 import com.commonsware.cwac.wakeful.WakefulIntentService;
+import com.example.minder_android.core.location_api.LocationAPIController;
 import com.google.android.gms.location.LocationResult;
 
 import static com.example.minder_android.core.Const.ACTION_STORE_LOCATION;
@@ -24,17 +25,20 @@ public class StoreLocationReceiver extends BroadcastReceiver {
                                 ? LocationResult.extractResult(_intent).getLastLocation()
                                 : _intent.getExtras().getParcelable(LocationManager.KEY_LOCATION_CHANGED));
             serviceIntent.putExtra(KEY_LOCATION, location);
-            WakefulIntentService.sendWakefulWork(_context, serviceIntent);
+            if (location != null) {
+                WakefulIntentService.sendWakefulWork(_context, serviceIntent);
+            }
         }
         else {
-            if (isScheduleAlarmNeeded()) {
-//                scheduleAlarms(_context);
+            if (isSubscriptionOnRebootNeeded()) {
+                LocationAPIController controller = LocationAPIController.INSTANCE.setContext(_context);
+                controller.subscribeLocationUpdates(this.getClass());
             }
         }
     }
 
     // method stub for future scheduling after device reboot
-    private static boolean isScheduleAlarmNeeded() { return false; }
+    private static boolean isSubscriptionOnRebootNeeded() { return false; }
 
     private static Intent createStoreLocationServiceIntent(Context _context) {
         Intent i=new Intent(_context, StoreLocationService.class);

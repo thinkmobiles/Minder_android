@@ -78,6 +78,7 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
 
     private void subscribe() {
         LocationServices.FusedLocationApi.requestLocationUpdates(mClient, getLocationRequest(), createPendingIntent(mSubscriber));
+        mSubscriptionResultListener.onSuccess();
     }
 
     void reconnect() {
@@ -89,10 +90,10 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
         }
     }
     void connectionResolutionError(){
-        mConnectionListener.onConnectionFailed();
+        mSubscriptionResultListener.onFailure();
     }
     void settingsResolutionError(){
-        mConnectionListener.onConnectionFailed();
+        mSubscriptionResultListener.onFailure();
     }
 
     private void checkLocationSettings() {
@@ -139,7 +140,7 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
             }
             if (isSomthingWrong) {
                 Toast.makeText(mContext, R.string.settings_resolution_fail_msg, Toast.LENGTH_LONG).show();
-                mConnectionListener.onConnectionFailed();
+                mSubscriptionResultListener.onFailure();
             }
     }
 
@@ -150,7 +151,6 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
             case SUBSCRIBE:
                 if (isLocationSettingsChecked) {
                     subscribe();
-                    mConnectionListener.onConnected();
                 } else {
                     checkLocationSettings();
                 }
@@ -159,14 +159,14 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
                 unsubscribe();
                 break;
             case UNDEFINED:
-                mConnectionListener.onConnectionFailed();
+                mSubscriptionResultListener.onFailure();
         }
     }
 
     //Callback from Play Services
     @Override
     public void onConnectionSuspended(int i) {
-        mConnectionListener.onConnectionFailed();
+        mSubscriptionResultListener.onFailure();
     }
 
     //Callback from Play Services
@@ -185,7 +185,7 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
         }
         if (!isResolved) {
             Toast.makeText(mContext, R.string.no_fused, Toast.LENGTH_LONG).show();
-            mConnectionListener.onConnectionFailed();
+            mSubscriptionResultListener.onFailure();
         }
     }
 }

@@ -11,11 +11,11 @@ import static com.example.minder_android.core.Const.ACTION_STORE_LOCATION;
  * Created by Max on 22.07.15.
  * Abstract class, encapsulates location providers. Gives an interface to subscribe
  * given Broadcast receiver to Location updates
- * Describes interface IConnection to use for error handling
+ * Describes interface ISubscriptionResult to use for error handling
  */
 abstract class AbsLocationAdapter {
     protected Context mContext;
-    protected IConnection mConnectionListener;
+    protected ISubscriptionResult mSubscriptionResultListener;
     protected Class mSubscriber;
 
 
@@ -47,15 +47,15 @@ abstract class AbsLocationAdapter {
         return i;
     }
 
-    protected void setConnectionListener(IConnection _listener) {
-        this.mConnectionListener = _listener;
+    protected void setConnectionListener(ISubscriptionResult _listener) {
+        this.mSubscriptionResultListener = _listener;
     }
     protected void removeConnectionListener() {
-        this.mConnectionListener = null;
+        this.mSubscriptionResultListener = null;
     }
 
-    interface IConnection {
-        void onConnected();
-        void onConnectionFailed();
+    interface ISubscriptionResult {
+        void onSuccess();
+        void onFailure();
     }
 }
