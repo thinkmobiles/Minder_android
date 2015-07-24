@@ -54,8 +54,7 @@ public final class HomeFragmentController {
             }
         });
 
-        LocationAPIController apiController = new LocationAPIController(mFragment.getActivity());
-        apiController.unsubscribeLocationUpdates(StoreLocationReceiver.class);
+        LocationAPIController.INSTANCE.unsubscribeLocationUpdates(StoreLocationReceiver.class);
         AppSettings.setLoggedIn(false);
     }
 

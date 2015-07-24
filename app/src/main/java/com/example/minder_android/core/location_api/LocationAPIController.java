@@ -13,19 +13,20 @@ import de.greenrobot.event.EventBus;
 
 /**
  * Created by Max on 22.07.15.
+ * This enum is a singleton, that holds Location API adapter, forwards subscribe and unsubscribe requests
+ * to it and gets success or fail in AbsLocationAdapter.IConnection interface. If Fused location provider is available,
+ * it is created first. If it fails to subscribe, Simple Location provider is created
+ * and subscribes given Broadcast receiver to location updates, if it is possible.
  */
-public class LocationAPIController implements AbsLocationAdapter.IConnection {
+
+public enum  LocationAPIController implements AbsLocationAdapter.IConnection {
+    INSTANCE;
     private AbsLocationAdapter mAdapter;
     private Context mContext;
-    private LocationUIHelper mUIHelper;
     private Class mSubsriber;
 
-    public LocationAPIController(Context _context) {
+    public void setContext(Context _context) {
         this.mContext = _context;
-    }
-
-    public  LocationUIHelper getUIHelper() {
-        return mUIHelper == null ? new LocationUIHelper(mContext) : mUIHelper;
     }
 
     public void unsubscribeLocationUpdates( Class<? extends BroadcastReceiver> _subsriber) {
@@ -53,7 +54,7 @@ public class LocationAPIController implements AbsLocationAdapter.IConnection {
         return GooglePlayServicesUtil.isGooglePlayServicesAvailable(_context) == ConnectionResult.SUCCESS;
     }
 
-    public boolean isSubscribedLocationUpdates(final Context _context, Class<? extends BroadcastReceiver>  _subsriber) {
+    public boolean isSubscribedLocationUpdates(Class<? extends BroadcastReceiver>  _subsriber) {
         return getLocationAdapter().isSubscribedLocationUpdates(_subsriber);
     }
 

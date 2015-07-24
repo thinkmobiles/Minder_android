@@ -11,22 +11,33 @@ import android.widget.Toast;
 import com.example.minder_android.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 
 import static com.example.minder_android.core.Const.FUSED_LOCATION_RESOLUTION_REQUEST_ID;
+import static com.example.minder_android.core.Const.FUSED_LOCATION_SETTINGS_REQUEST_ID;
 import static com.example.minder_android.core.Const.LOCATION_UPDATE_INTERVAL;
 
 
 /**
  * Created by Max on 22.07.15.
+ * Google Play Services Fused location provider interface adapter
+ * Subscribes supplied Broadcast receiver to location updates, if possible
+ * Performs basic error resolution and also uses Google LocationSettings API to turn on Location settings updates if possible
  */
-class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback<LocationSettingsResult> {
+
 
     private enum  ACTION {UNDEFINED, SUBSCRIBE, UNSUBSCRIBE};
 
     private GoogleApiClient mClient;
     private ACTION mAction = ACTION.UNDEFINED;
+    private boolean isLocationSettingsChecked = false;
 
     public FusedLocationAdapter(Context _context) {
         super(_context);
@@ -60,12 +71,89 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
         }
     }
 
+    private void unsubscribe() {
+        LocationServices.FusedLocationApi
+                .removeLocationUpdates(mClient, createPendingIntent(mSubscriber));
+    }
+
+    private void subscribe() {
+        LocationServices.FusedLocationApi.requestLocationUpdates(mClient, getLocationRequest(), createPendingIntent(mSubscriber));
+    }
+
+    void reconnect() {
+        if (!(mClient.isConnected() || mClient.isConnecting())) {
+            mClient.connect();
+        } else {
+            mClient.disconnect();
+            mClient.connect();
+        }
+    }
+    void connectionResolutionError(){
+        mConnectionListener.onConnectionFailed();
+    }
+    void settingsResolutionError(){
+        mConnectionListener.onConnectionFailed();
+    }
+
+    private void checkLocationSettings() {
+        LocationSettingsRequest.Builder b =
+                new LocationSettingsRequest.Builder()
+                        .addLocationRequest(getLocationRequest());
+        PendingResult<LocationSettingsResult> result =
+                LocationServices.SettingsApi.checkLocationSettings(mClient, b.build());
+        result.setResultCallback(this);
+    }
+
+    private LocationRequest getLocationRequest(){
+        return new LocationRequest()
+                .setExpirationDuration(LOCATION_UPDATE_INTERVAL * 10)
+                .setInterval(LOCATION_UPDATE_INTERVAL)
+                .setFastestInterval(LOCATION_UPDATE_INTERVAL / 2);
+    }
+
+
+
+    //Callback from LocationSettings API
+    @Override
+    public void onResult(LocationSettingsResult _result) {
+            boolean isSomthingWrong=true;
+            switch(_result.getStatus().getStatusCode()) {
+                case LocationSettingsStatusCodes.SUCCESS:
+                    subscribe();
+                    isSomthingWrong=false;
+                break;
+                case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                    try {
+                        _result
+                                .getStatus()
+                                .startResolutionForResult((Activity) mContext, FUSED_LOCATION_SETTINGS_REQUEST_ID);
+                        isSomthingWrong=false;
+                    }
+                    catch (IntentSender.SendIntentException e) {
+        // oops
+                    }
+                break;
+                case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+        // more oops
+                break;
+            }
+            if (isSomthingWrong) {
+                Toast.makeText(mContext, R.string.settings_resolution_fail_msg, Toast.LENGTH_LONG).show();
+                mConnectionListener.onConnectionFailed();
+            }
+    }
+
+    //Callback from Play Services
     @Override
     public void onConnected(Bundle bundle) {
         switch (mAction){
             case SUBSCRIBE:
-                subscribe();
-                mConnectionListener.onConnected();
+                if (isLocationSettingsChecked) {
+                    subscribe();
+                    mConnectionListener.onConnected();
+                } else {
+                    checkLocationSettings();
+                }
                 break;
             case UNSUBSCRIBE:
                 unsubscribe();
@@ -75,24 +163,13 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
         }
     }
 
-    private void unsubscribe() {
-        LocationServices.FusedLocationApi
-                .removeLocationUpdates(mClient, createPendingIntent(mSubscriber));
-    }
-
-    private void subscribe() {
-        LocationRequest request=new LocationRequest()
-                .setExpirationDuration(LOCATION_UPDATE_INTERVAL * 10)
-                .setInterval(LOCATION_UPDATE_INTERVAL)
-                .setFastestInterval(LOCATION_UPDATE_INTERVAL / 2);
-        LocationServices.FusedLocationApi.requestLocationUpdates(mClient, request, createPendingIntent(mSubscriber));
-    }
-
+    //Callback from Play Services
     @Override
     public void onConnectionSuspended(int i) {
         mConnectionListener.onConnectionFailed();
     }
 
+    //Callback from Play Services
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         boolean isResolved = false;
@@ -109,12 +186,6 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
         if (!isResolved) {
             Toast.makeText(mContext, R.string.no_fused, Toast.LENGTH_LONG).show();
             mConnectionListener.onConnectionFailed();
-        }
-    }
-
-    void reconnect() {
-        if (!mClient.isConnected()) {
-            mClient.connect();
         }
     }
 }

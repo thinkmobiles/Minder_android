@@ -9,6 +9,9 @@ import static com.example.minder_android.core.Const.ACTION_STORE_LOCATION;
 
 /**
  * Created by Max on 22.07.15.
+ * Abstract class, encapsulates location providers. Gives an interface to subscribe
+ * given Broadcast receiver to Location updates
+ * Describes interface IConnection to use for error handling
  */
 abstract class AbsLocationAdapter {
     protected Context mContext;

@@ -16,7 +16,6 @@ import static com.example.minder_android.core.Const.KEY_LOCATION;
  * Created by Max on 21.07.15.
  */
 public class StoreLocationReceiver extends BroadcastReceiver {
-    private static final int INITIAL_DELAY=10000; // 10 seconds
     @Override
     public void onReceive(Context _context, Intent _intent) {
         if (_intent.getAction() == ACTION_STORE_LOCATION) {

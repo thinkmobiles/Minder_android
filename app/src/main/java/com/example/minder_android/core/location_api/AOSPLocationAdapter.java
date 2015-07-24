@@ -8,6 +8,9 @@ import static com.example.minder_android.core.Const.LOCATION_UPDATE_INTERVAL;
 
 /**
  * Created by Max on 17.07.15.
+ *  Subscribes supplied Broadcast receiver to location updates using
+ *  LocationManager GPS_PROVIDER or NETWORK_PROVIDER , if possible.
+ * Performs basic error resolution
  */
 class AOSPLocationAdapter extends AbsLocationAdapter {
     private final static String DEBUG_TAG = "minder_android : AOSPLocationAdapter";

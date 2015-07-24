@@ -6,7 +6,9 @@ import android.os.Bundle;
 
 import com.example.minder_android.base.BaseActivity;
 import com.example.minder_android.core.AppSettings;
+import com.example.minder_android.core.StoreLocationReceiver;
 import com.example.minder_android.core.location_api.LocationAPIController;
+import com.example.minder_android.core.location_api.LocationUIHelper;
 import com.example.minder_android.main.CongratulationFragment;
 import com.example.minder_android.main.HomeFragment;
 import com.example.minder_android.main.SignInFragment;
@@ -21,8 +23,10 @@ public final class MainActivity extends BaseActivity {
 
         RequestManager.registerClient(getApplicationContext());
         AppSettings.init(getApplicationContext());
+        LocationAPIController.INSTANCE.setContext(this);
         if (_savedInstanceState == null) {
-            if (AppSettings.isAppLoggedIn()) {
+//            if (AppSettings.isAppLoggedIn()) {
+            if (LocationAPIController.INSTANCE.isSubscribedLocationUpdates(StoreLocationReceiver.class)) {
                 switchContent(new HomeFragment(), false);
             } else {
                 switchContent(new SignInFragment(), false);
@@ -55,8 +59,7 @@ public final class MainActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        LocationAPIController locationAPIController = new LocationAPIController(this);
-        locationAPIController.getUIHelper().onActivityResult(requestCode, resultCode, data);
+        LocationUIHelper.onActivityResult(requestCode, resultCode, data);
     }
 
 }

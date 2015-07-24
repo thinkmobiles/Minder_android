@@ -66,8 +66,7 @@ public final class SignInFragmentController {
     private void onUserSignInSuccess(JsonObject _jsonObject, Response _response) {
         String cookie = getCookieIdFromResponse(_response);
         RestApiHeaders.setCookie(cookie);
-        LocationAPIController apiController = new LocationAPIController(mFragment.getActivity());
-        apiController.subscribeLocationUpdates(StoreLocationReceiver.class);
+        LocationAPIController.INSTANCE.subscribeLocationUpdates(StoreLocationReceiver.class);
         AppSettings.setLoggedIn(true);
         mFragment.onUserSignInSuccess();
     }

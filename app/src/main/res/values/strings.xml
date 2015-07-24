@@ -46,5 +46,6 @@
     <string name="no_location_profider_available">No location provider available</string>
     <string name="location_api_connection_error">Location API connection error</string>
     <string name="error_storing_location">ERROR STORING LOCATION:</string>
+    <string name="settings_resolution_fail_msg">Settings resolution failed</string>
 
 </resources>
