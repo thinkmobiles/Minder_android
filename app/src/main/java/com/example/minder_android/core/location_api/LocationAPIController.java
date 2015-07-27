@@ -64,8 +64,8 @@ public enum  LocationAPIController implements AbsLocationAdapter.ISubscriptionRe
     }
 
     @Override
-    public void onSuccess() {
-        EventBus.getDefault().postSticky(new LocationApiConnectionEvent(true));
+    public void onSuccess(String _message) {
+        EventBus.getDefault().postSticky(new LocationApiConnectionEvent(true, _message));
     }
 
     @Override

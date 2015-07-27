@@ -63,7 +63,7 @@ public final class HomeFragmentController {
     }
 
     public void onEvent(LocationApiConnectionEvent _event){
-        mFragment.setHomeScreenText(mFragment.getString(_event.isConnected ? R.string.connected : R.string.location_api_connection_error));
+        mFragment.setHomeScreenText(_event.isConnected ? _event.message : mFragment.getString(R.string.location_api_connection_error));
     };
     public void onEvent(StoreLocationEvent _event){
         mFragment.setHomeScreenText(String.format("%s \n %s : %s ",mFragment.getHomeStringText(), DateTimeConverter.getCurrentDateTime(), _event.Message));

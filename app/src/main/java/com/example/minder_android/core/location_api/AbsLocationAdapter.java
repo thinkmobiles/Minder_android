@@ -55,7 +55,7 @@ abstract class AbsLocationAdapter {
     }
 
     interface ISubscriptionResult {
-        void onSuccess();
+        void onSuccess(String _message);
         void onFailure();
     }
 }

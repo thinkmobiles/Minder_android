@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.location.LocationManager;
 
+import com.example.minder_android.R;
+
 import static com.example.minder_android.core.Const.LOCATION_UPDATE_INTERVAL;
 
 /**
@@ -39,7 +41,7 @@ class AOSPLocationAdapter extends AbsLocationAdapter {
             locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, LOCATION_UPDATE_INTERVAL, 0,
                     createPendingIntent(_subscriber));
         }
-        mSubscriptionResultListener.onSuccess();
+        mSubscriptionResultListener.onSuccess(mContext.getString(R.string.connected_te_service , this.getClass().getSimpleName().toString()));
     }
 
     @Override

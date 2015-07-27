@@ -78,7 +78,7 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
 
     private void subscribe() {
         LocationServices.FusedLocationApi.requestLocationUpdates(mClient, getLocationRequest(), createPendingIntent(mSubscriber));
-        mSubscriptionResultListener.onSuccess();
+        mSubscriptionResultListener.onSuccess(mContext.getString(R.string.connected_te_service, this.getClass().getSimpleName().toString()));
     }
 
     void reconnect() {
