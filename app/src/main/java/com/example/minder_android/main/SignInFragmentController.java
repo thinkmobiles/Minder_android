@@ -22,6 +22,7 @@ import retrofit.client.Response;
 
 import static com.example.minder_android.core.Const.ACTION_SYNC;
 import static com.example.minder_android.core.Const.KEY_COOKIE_IN;
+import static com.example.minder_android.core.Const.SYNC_INTERVAL;
 
 /**
  * Created by ���� on 06.05.2015.
@@ -85,8 +86,8 @@ public final class SignInFragmentController {
                 0);
 
         alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                10000,
-                20000,
+                SYNC_INTERVAL,
+                SYNC_INTERVAL,
                 alarmIntent);
     }
 }

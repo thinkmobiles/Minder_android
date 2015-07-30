@@ -4,10 +4,11 @@ package com.example.minder_android.core;
  * Created by ���� on 06.05.2015.
  */
 public abstract class Const {
-    public static final int SPLASH_SLEEP_TIME = 3000;
+    public static final int SPLASH_SLEEP_TIME        = 3000;
     public static final int LOCATION_UPDATE_INTERVAL = 30 * 60 * 1000; //30 min
+    public static final int SYNC_INTERVAL            = 30 * 60 * 1000; //30 min
 //    public static final int LOCATION_UPDATE_INTERVAL = 30000; //test
-    public static final int MIN_PASSWORD_LENGTH = 6;
+    public static final int MIN_PASSWORD_LENGTH        = 6;
 
     public static final int FUSED_LOCATION_RESOLUTION_REQUEST_ID    = 789;
     public static final int FUSED_LOCATION_SETTINGS_REQUEST_ID      = 790;
