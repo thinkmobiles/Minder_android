@@ -3,17 +3,16 @@ package com.example.minder_android.core.events;
 /**
  * Created by Max on 23.07.15.
  */
-public class LocationApiConnectionEvent {
+public class LocationApiConnectionEvent extends MessageEvent{
     public boolean isConnected;
-    public String message;
 
     public LocationApiConnectionEvent(boolean _isConnected) {
+        super("");
         this.isConnected = _isConnected;
-        this.message = "";
     }
 
     public LocationApiConnectionEvent(boolean _isConnected, String _message) {
+        super(_message);
         this.isConnected = _isConnected;
-        this.message = _message;
     }
 }

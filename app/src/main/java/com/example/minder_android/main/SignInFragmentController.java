@@ -1,9 +1,13 @@
 package com.example.minder_android.main;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
+import com.example.minder_android.core.AppBroadcastsReceiver;
 import com.example.minder_android.core.AppSettings;
-import com.example.minder_android.core.StoreLocationReceiver;
 import com.example.minder_android.core.location_api.LocationAPIController;
 import com.example.minder_android.core.utils.PBarController;
 import com.example.minder_android.rest.RequestJsonFactory;
@@ -16,6 +20,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Header;
 import retrofit.client.Response;
 
+import static com.example.minder_android.core.Const.ACTION_SYNC;
 import static com.example.minder_android.core.Const.KEY_COOKIE_IN;
 
 /**
@@ -66,8 +71,22 @@ public final class SignInFragmentController {
     private void onUserSignInSuccess(JsonObject _jsonObject, Response _response) {
         String cookie = getCookieIdFromResponse(_response);
         RestApiHeaders.setCookie(cookie);
-        LocationAPIController.INSTANCE.subscribeLocationUpdates(StoreLocationReceiver.class);
+        LocationAPIController.INSTANCE.subscribeLocationUpdates(AppBroadcastsReceiver.class);
         AppSettings.setLoggedIn(true);
+        startSyncService();
         mFragment.onUserSignInSuccess();
+    }
+
+    private void startSyncService() {
+        AlarmManager alarmManager  = (AlarmManager)mFragment.getActivity().getSystemService(Context.ALARM_SERVICE);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(mFragment.getActivity().getApplication(),
+                0,
+                new Intent(mFragment.getActivity(), AppBroadcastsReceiver.class).setAction(ACTION_SYNC),
+                0);
+
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                10000,
+                20000,
+                alarmIntent);
     }
 }

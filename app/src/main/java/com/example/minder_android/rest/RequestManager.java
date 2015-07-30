@@ -5,6 +5,7 @@ import android.content.Context;
 import com.google.gson.JsonObject;
 
 import retrofit.Callback;
+import retrofit.mime.TypedFile;
 
 /**
  * Created by Max on 16.07.15.
@@ -37,6 +38,14 @@ public final class RequestManager {
 
     public static void storeLocationToServer(JsonObject _requestJson, final Callback<JsonObject> _callback) {
         ServiceBuilder.getApiService().storeLocationToServer(_requestJson, _callback);
+    }
+
+    public static void sync(String _name, String _date, TypedFile _file, final Callback<JsonObject> _callback) {
+        ServiceBuilder.getApiService().sync(_name, _date, _file, _callback);
+    }
+
+    public static JsonObject getCurrentDeviceConfig() {
+        return ServiceBuilder.getApiService().getCurrentDeviceConfig();
     }
 
 }

@@ -12,6 +12,10 @@ import static com.example.minder_android.core.Const.KEY_COOKIE_OUT;
 public class RestApiHeaders implements RequestInterceptor {
     private static String mCookie;
 
+    public RestApiHeaders() {
+        mCookie = AppSettings.getCookie();
+    }
+
     public static void setCookie(String _cookie) {
         mCookie = _cookie;
         AppSettings.storeCookie(mCookie);

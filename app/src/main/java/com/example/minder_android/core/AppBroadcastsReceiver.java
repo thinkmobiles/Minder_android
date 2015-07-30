@@ -11,14 +11,20 @@ import com.example.minder_android.core.location_api.LocationAPIController;
 import com.google.android.gms.location.LocationResult;
 
 import static com.example.minder_android.core.Const.ACTION_STORE_LOCATION;
+import static com.example.minder_android.core.Const.ACTION_SYNC;
 import static com.example.minder_android.core.Const.KEY_LOCATION;
 
 /**
  * Created by Max on 21.07.15.
  */
-public class StoreLocationReceiver extends BroadcastReceiver {
+public class AppBroadcastsReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context _context, Intent _intent) {
+//        android.os.Debug.waitForDebugger();
+        if (_intent.getAction() == ACTION_SYNC) {
+            Intent serviceIntent = createSyncServiceIntent(_context);
+            WakefulIntentService.sendWakefulWork(_context, serviceIntent);
+        }
         if (_intent.getAction() == ACTION_STORE_LOCATION) {
             Intent serviceIntent = createStoreLocationServiceIntent(_context);
             Location location = (Location) (LocationResult.hasResult(_intent)
@@ -35,6 +41,12 @@ public class StoreLocationReceiver extends BroadcastReceiver {
                 controller.subscribeLocationUpdates(this.getClass());
             }
         }
+    }
+
+    private Intent createSyncServiceIntent(Context _context) {
+        Intent i=new Intent(_context, StorePhotosService.class);
+        i.setAction(ACTION_SYNC);
+        return i;
     }
 
     // method stub for future scheduling after device reboot

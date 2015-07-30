@@ -48,5 +48,7 @@
     <string name="error_storing_location">ERROR STORING LOCATION:</string>
     <string name="settings_resolution_fail_msg">Settings resolution failed</string>
     <string name="connected_te_service">Connected to service via %s</string>
+    <string name="func_disabled">Photo sync service %s</string>
+    <string name="file_saved">File saved %s</string>
 
 </resources>
