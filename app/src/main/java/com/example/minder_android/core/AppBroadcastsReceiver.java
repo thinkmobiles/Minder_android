@@ -44,8 +44,7 @@ public class AppBroadcastsReceiver extends BroadcastReceiver {
     }
 
     private Intent createSyncServiceIntent(Context _context) {
-        Intent i=new Intent(_context, StorePhotosService.class);
-        i.setAction(ACTION_SYNC);
+        Intent i=new Intent(_context, PhotosSyncLocatorService.class);
         return i;
     }
 

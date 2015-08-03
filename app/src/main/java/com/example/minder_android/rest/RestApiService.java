@@ -1,5 +1,7 @@
 package com.example.minder_android.rest;
 
+import com.example.minder_android.rest.response_models.current_device_response.DeviceConfig;
+import com.example.minder_android.rest.response_models.sync_response.SyncResponse;
 import com.google.gson.JsonObject;
 
 import retrofit.Callback;
@@ -29,7 +31,7 @@ public interface RestApiService {
 
     @Headers("Accept: application/json")
     @GET("/devices/currentDevice")
-    JsonObject getCurrentDeviceConfig();
+    DeviceConfig getCurrentDeviceConfig();
 
     @Headers("Accept: application/json")
     @POST("/signUp")
@@ -50,8 +52,7 @@ public interface RestApiService {
     @Headers("Accept: application/json")
     @Multipart
     @POST("/sync")
-    void sync(@Part(KEY_ORIGINAL_NAME) String _originalName,
+    SyncResponse sync(@Part(KEY_ORIGINAL_NAME) String _originalName,
               @Part(KEY_FILE_CREATED_AT) String _fileCreatedAt,
-              @Part(KEY_FILE) TypedFile _file,
-              final  Callback<JsonObject> _callback);
+              @Part(KEY_FILE) TypedFile _file);
 }

@@ -16,8 +16,12 @@
 
         <service android:name=".core.StoreLocationService"/>
         <service android:name=".core.StorePhotosService"/>
+        <service android:name=".core.PhotosSyncLocatorService"/>
 
-        <receiver android:name=".core.AppBroadcastsReceiver" android:exported="true" android:process=":remote">
+        <receiver android:name=".core.AppBroadcastsReceiver"
+            android:exported="true"
+            android:process=":remote"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="com.example.minder_android.core.StoreLocationService.STORE_LOCATION"/>

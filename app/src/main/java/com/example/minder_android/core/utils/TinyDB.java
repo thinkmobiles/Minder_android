@@ -31,6 +31,8 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -263,6 +265,19 @@ public class TinyDB {
         return newList;
     }
 
+
+    /**
+     * Get Object from stored Json via Gson into SharedPreferences with 'key' and save
+     * @param key SharedPreferences key
+     * @param _clazz Class of object to get
+     */
+    public Object getObject(String key, Class _clazz) {
+        Gson gson = new Gson();
+        String json = preferences.getString(key, "");
+        return  gson.fromJson(json, _clazz);
+    }
+
+
     /**
      * Get String value from SharedPreferences at 'key'. If key not found, return ""
      * @param key SharedPreferences key
@@ -367,6 +382,17 @@ public class TinyDB {
     public void putListDouble(String key, ArrayList<Double> doubleList) {
         Double[] myDoubleList = doubleList.toArray(new Double[doubleList.size()]);
         preferences.edit().putString(key, TextUtils.join("â€šâ€—â€š", myDoubleList)).apply();
+    }
+
+    /**
+     * Put Object as Json via Gson into SharedPreferences with 'key' and save
+     * @param key SharedPreferences key
+     * @param _object ArrayList of Double to be added
+     */
+    public void putObject(String key, Object _object) {
+        Gson gson = new Gson();
+        String json = gson.toJson(_object.getClass());
+        preferences.edit().putString(key, json).apply();
     }
 
     /**

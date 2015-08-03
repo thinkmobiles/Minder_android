@@ -50,5 +50,9 @@
     <string name="connected_te_service">Connected to service via %s</string>
     <string name="func_disabled">Photo sync service %s</string>
     <string name="file_saved">File saved %s</string>
+    <string name="error_getting_device_config">Error geting device configuration with message %s</string>
+    <string name="success_created">successs created</string>
+    <string name="upload_failed">File %1$s upload failed with message %2$s</string>
+    <string name="no_connection">No network connection available</string>
 
 </resources>

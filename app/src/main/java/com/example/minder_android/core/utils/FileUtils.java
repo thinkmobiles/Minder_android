@@ -2,6 +2,7 @@ package com.example.minder_android.core.utils;
 
 import android.webkit.MimeTypeMap;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -29,5 +30,8 @@ public class FileUtils {
         return  new SimpleDateFormat(DATE_TIME_FORMAT).format(new Date(file.file().lastModified()));
     }
 
-
+    public static TypedFile getTypedFile(String _image) {
+        String type = FileUtils.getMimeType(_image);
+        return new TypedFile(type, new File(_image));
+    }
 }

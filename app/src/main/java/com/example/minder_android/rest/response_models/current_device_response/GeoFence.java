@@ -1,4 +1,4 @@
-package com.example.minder_android.rest.response_models;
+package com.example.minder_android.rest.response_models.current_device_response;
 
 import com.google.gson.annotations.Expose;
 

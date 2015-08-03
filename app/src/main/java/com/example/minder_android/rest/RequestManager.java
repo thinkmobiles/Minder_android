@@ -2,6 +2,8 @@ package com.example.minder_android.rest;
 
 import android.content.Context;
 
+import com.example.minder_android.rest.response_models.current_device_response.DeviceConfig;
+import com.example.minder_android.rest.response_models.sync_response.SyncResponse;
 import com.google.gson.JsonObject;
 
 import retrofit.Callback;
@@ -40,11 +42,11 @@ public final class RequestManager {
         ServiceBuilder.getApiService().storeLocationToServer(_requestJson, _callback);
     }
 
-    public static void sync(String _name, String _date, TypedFile _file, final Callback<JsonObject> _callback) {
-        ServiceBuilder.getApiService().sync(_name, _date, _file, _callback);
+    public static SyncResponse sync(String _name, String _date, TypedFile _file){
+        return ServiceBuilder.getApiService().sync(_name, _date, _file);
     }
 
-    public static JsonObject getCurrentDeviceConfig() {
+    public static DeviceConfig getCurrentDeviceConfig() {
         return ServiceBuilder.getApiService().getCurrentDeviceConfig();
     }
 

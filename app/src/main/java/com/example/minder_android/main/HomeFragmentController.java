@@ -5,11 +5,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 
-import com.commonsware.cwac.wakeful.WakefulIntentService;
 import com.example.minder_android.R;
 import com.example.minder_android.core.AppBroadcastsReceiver;
 import com.example.minder_android.core.AppSettings;
-import com.example.minder_android.core.StorePhotosService;
 import com.example.minder_android.core.events.LocationApiConnectionEvent;
 import com.example.minder_android.core.events.MessageEvent;
 import com.example.minder_android.core.location_api.LocationAPIController;
@@ -57,7 +55,6 @@ public final class HomeFragmentController {
             public void failure(RetrofitError _error) {
                 PBarController.hideProgressDialog();
                 RestApiHeaders.clearCookie();
-//                Toast.makeText(mFragment.getActivity(), _error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -80,14 +77,11 @@ public final class HomeFragmentController {
         EventBus.getDefault().unregister(this);
     }
 
-    public void onEvent(LocationApiConnectionEvent _event){
+    public void onEventMainThread(LocationApiConnectionEvent _event){
         mFragment.setHomeScreenText(_event.isConnected ? _event.message : mFragment.getString(R.string.location_api_connection_error));
-
-        Intent storePhotosIntent = new Intent(mFragment.getActivity().getApplication(), StorePhotosService.class);
-        WakefulIntentService.sendWakefulWork(mFragment.getActivity().getApplication(), storePhotosIntent);
     };
 
-    public void onEvent(MessageEvent _event){
+    public void onEventMainThread(MessageEvent _event){
         addEventMessageToLog(_event);
     }
 
