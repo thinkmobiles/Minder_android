@@ -22,6 +22,7 @@ import static com.example.minder_android.core.Const.DEBUG_TAG;
 
 /**
  * Created by Max on 28.07.15.
+ * this service uploads images from list, created by PhotosSyncLocatorService and deletes uploaded files from list
  */
 public class StorePhotosService extends WakefulIntentService{
 

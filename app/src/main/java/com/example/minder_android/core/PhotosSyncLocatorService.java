@@ -26,6 +26,7 @@ import static com.example.minder_android.core.Const.DEBUG_TAG;
 
 /**
  * Created by Max on 31.07.15.
+ * This service creates list of images taken since last sync and calls StorePhotosService to upload it
  */
 public class PhotosSyncLocatorService extends WakefulIntentService {
 
