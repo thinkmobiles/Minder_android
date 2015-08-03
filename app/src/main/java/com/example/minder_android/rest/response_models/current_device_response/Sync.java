@@ -1,5 +1,6 @@
 package com.example.minder_android.rest.response_models.current_device_response;
 
+import com.example.minder_android.core.Const;
 import com.google.gson.annotations.Expose;
 
 /**
@@ -36,6 +37,9 @@ public class Sync {
          * The lastSyncDateTime
          */
         public String getLastSyncDateTime() {
+            if (lastSyncDateTime == null) {
+                lastSyncDateTime = Const.START_OF_TIMES;
+            }
             return lastSyncDateTime;
         }
 

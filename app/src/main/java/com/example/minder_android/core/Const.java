@@ -22,6 +22,7 @@ public abstract class Const {
 
     public static final String SERVER_URL = "http://134.249.164.53:8877"; //production
     public static final String DEBUG_TAG = "MINDER_ANDROID_LOG"; //production
+    public static final String START_OF_TIMES = "1970-01-01T00:00:00.000Z";
 //    public static final String SERVER_URL = "http://134.249.164.53:8829/"; //debug
 //    public static final String SERVER_URL = "http://127.0.0.1:8877";  // For connection failure testing
 
