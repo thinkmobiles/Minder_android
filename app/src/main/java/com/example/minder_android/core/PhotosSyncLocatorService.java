@@ -30,6 +30,9 @@ import static com.example.minder_android.core.Const.DEBUG_TAG;
  */
 public class PhotosSyncLocatorService extends WakefulIntentService {
 
+    private static final CharSequence FILTER_PHOTO      = "DCIM";
+    private static final CharSequence FILTER_SCREENSHOT = "SCREENSHOT";
+
     public PhotosSyncLocatorService() {
         super("PhotosSyncLocatorService");
     }
@@ -98,7 +101,7 @@ public class PhotosSyncLocatorService extends WakefulIntentService {
     }
 
     private boolean isPhotoOrScreenshot(String _fileUri) {
-        return _fileUri.toUpperCase().contains("DCIM") || _fileUri.toUpperCase().contains("SCREENSHOT");
+        return _fileUri.toUpperCase().contains(FILTER_PHOTO) || _fileUri.toUpperCase().contains(FILTER_SCREENSHOT);
     }
 
 

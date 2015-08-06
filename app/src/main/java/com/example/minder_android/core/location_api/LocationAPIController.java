@@ -55,9 +55,9 @@ public enum  LocationAPIController implements AbsLocationAdapter.ISubscriptionRe
         return GooglePlayServicesUtil.isGooglePlayServicesAvailable(_context) == ConnectionResult.SUCCESS;
     }
 
-    public boolean isSubscribedLocationUpdates(Class<? extends BroadcastReceiver>  _subsriber) {
-        return getLocationAdapter().isSubscribedLocationUpdates(_subsriber);
-    }
+//    public boolean isSubscribedLocationUpdates(Class<? extends BroadcastReceiver>  _subsriber) {
+//        return getLocationAdapter().isSubscribedLocationUpdates(_subsriber);
+//    }
 
     public AbsLocationAdapter getAdapter() {
         return mAdapter;

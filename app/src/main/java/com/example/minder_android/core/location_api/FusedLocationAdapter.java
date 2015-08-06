@@ -33,10 +33,10 @@ import static com.example.minder_android.core.Const.LOCATION_UPDATE_INTERVAL;
 class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback<LocationSettingsResult> {
 
 
-    private enum  ACTION {UNDEFINED, SUBSCRIBE, UNSUBSCRIBE};
+    private enum Action {UNDEFINED, SUBSCRIBE, UNSUBSCRIBE};
 
     private GoogleApiClient mClient;
-    private ACTION mAction = ACTION.UNDEFINED;
+    private Action mAction = Action.UNDEFINED;
     private boolean isLocationSettingsChecked = false;
 
     public FusedLocationAdapter(Context _context) {
@@ -51,7 +51,7 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
     @Override
     public void subscribeLocationUpdates(Class<? extends BroadcastReceiver> _subscriber) {
         super.subscribeLocationUpdates(_subscriber);
-        mAction = ACTION.SUBSCRIBE;
+        mAction = Action.SUBSCRIBE;
         if (!mClient.isConnected()) {
             mClient.connect();
         } else {
@@ -63,7 +63,7 @@ class FusedLocationAdapter extends AbsLocationAdapter implements GoogleApiClient
     @Override
     public void unsubscribeLocationUpdates(Class<? extends BroadcastReceiver> _subscriber) {
         super.unsubscribeLocationUpdates(_subscriber);
-        mAction = ACTION.UNSUBSCRIBE;
+        mAction = Action.UNSUBSCRIBE;
         if (!mClient.isConnected()) {
             mClient.connect();
         } else {

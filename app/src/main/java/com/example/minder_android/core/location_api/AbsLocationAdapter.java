@@ -33,9 +33,9 @@ abstract class AbsLocationAdapter {
 
     // dirty hack ?
     // this method uses side effect of PendingIntent.FLAG_NO_CREATE , so it may not work in SDK ver. > 20
-    public boolean isSubscribedLocationUpdates(Class<? extends BroadcastReceiver> _subscriber){
-        return PendingIntent.getBroadcast(mContext, 0, createSubscriberIntent(_subscriber), PendingIntent.FLAG_NO_CREATE) != null;
-    };
+//    public boolean isSubscribedLocationUpdates(Class<? extends BroadcastReceiver> _subscriber){
+//        return PendingIntent.getBroadcast(mContext, 0, createSubscriberIntent(_subscriber), PendingIntent.FLAG_NO_CREATE) != null;
+//    };
 
     protected PendingIntent createPendingIntent(Class<? extends BroadcastReceiver> _subscriber) {
         return PendingIntent.getBroadcast(mContext, 0, createSubscriberIntent(_subscriber), 0);
